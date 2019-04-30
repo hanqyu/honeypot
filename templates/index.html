@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <style>
+        .box {
+            border-radius: .3em;
+            border: solid 1px rgba(0, 0, 0, 0.3);
+            padding: 1.2em;
+            width: 300px;
+        }
+        .user {
+            width: 5em;
+            padding: 1.5em 3em;
+        }
+        .user .profile-img {
+            border-radius: .7em;
+            width: 1em;
+            margin-bottom: .3em;
+        }
+        .user span.name {
+            margin-bottom: .3em;
+            color: dimgray;
+            float: right;
+        }
+
+        .question {
+            padding: .5em 1.5em;
+        }
+
+        .question .text {
+            font-size: 1.3em;
+            margin-bottom: 1em;
+        }
+
+        .question .info-bar {
+            font-size: 0.8em;
+            padding-bottom: 1em;
+        }
+
+        .question .info-bar span.region {
+            color: dimgray;
+            float: left;
+        }
+
+        .question .info-bar span.answered-count {
+            color: dimgray;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    {%csrf_token%}
+    <div class="box">
+        <div class="user">
+            <img class="profile-img" src={{ user_avatar_url }}>
+            <span class="name">
+                {{ user.username }}
+            </span>
+        </div>
+
+        <div class="question">
+            <div class="text">
+                {{ question_text }}
+            </div>
+            <div class="info-bar">
+                <span class="region">
+                    {{ question_region }}
+                </span>
+                <span class="answered-count">
+                    답변수: {{ question_answered_count }}
+                </span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

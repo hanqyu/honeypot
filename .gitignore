@@ -1,0 +1,5 @@
+creamie/secrets.py
+/media
+/static
+/.media
+db.sqlite3
