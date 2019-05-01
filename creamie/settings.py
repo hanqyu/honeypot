@@ -16,7 +16,6 @@ from django.core.exceptions import ImproperlyConfigured
 from creamie import secrets
 
 
-
 # Build paths inside the project like this: os.path.join
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -30,7 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'localhost', 'api-test.hanqyu.com',
                  'ec2-13-209-111-182.ap-northeast-2.compute.amazonaws.com', '13.209.111.182']
 
-secrets.set()
+secrets.main()
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # Application definition
@@ -120,6 +119,14 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
+
+if DEBUG:
+    REST_FRAMEWORK = {
+        'DEFAULT_PERMISSION_CLASSES': (
+            'rest_framework.permissions.AllowAny',
+        )
+    }
+
 
 
 # Auth User Model (Customized)

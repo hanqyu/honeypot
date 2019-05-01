@@ -14,11 +14,6 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-
 class CreateUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -64,22 +59,12 @@ class RegionSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class RegionViewSet(viewsets.ModelViewSet):
-    queryset = Region.objects.all()
-    serializer_class = RegionSerializer
-
-
 class DistrictSerializer(serializers.ModelSerializer):
     region = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = District
         fields = '__all__'
-
-
-class DistrictViewSet(viewsets.ModelViewSet):
-    queryset = District.objects.all()
-    serializer_class = DistrictSerializer
 
 
 class QuestionSerializer(serializers.ModelSerializer):
@@ -99,18 +84,9 @@ class QuestionSerializer(serializers.ModelSerializer):
         serializer.save(user=self.request.user)
 
 
-class QuestionViewSet(viewsets.ModelViewSet):
-    queryset = Question.objects.all()
-    serializer_class = QuestionSerializer
-
-
 class AnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answer
         fields = '__all__'
 
-
-class AnswerViewSet(viewsets.ModelViewSet):
-    queryset = Answer.objects.all()
-    serializer_class = AnswerSerializer
 
