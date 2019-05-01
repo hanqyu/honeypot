@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from django.urls import path
-from . import api, views
+from . import serializers, views
 from django.urls import include
 from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
@@ -8,13 +8,13 @@ from rest_framework_simplejwt import views as jwt_views
 
 
 router = routers.DefaultRouter()
-router.register('user', api.UserViewSet)
-router.register('region', api.RegionViewSet)
-router.register('district', api.DistrictViewSet)
-router.register('question', api.QuestionViewSet)
-router.register('answer', api.AnswerViewSet)
-router.register('create_user', api.CreateUserSerializer)
-router.register('login_user', api.CreateUserSerializer)
+router.register('user', serializers.UserViewSet)
+router.register('region', serializers.RegionViewSet)
+router.register('district', serializers.DistrictViewSet)
+router.register('question', serializers.QuestionViewSet)
+router.register('answer', serializers.AnswerViewSet)
+router.register('create_user', serializers.CreateUserSerializer)
+router.register('login_user', serializers.CreateUserSerializer)
 
 
 urlpatterns = [

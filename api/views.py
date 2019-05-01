@@ -1,4 +1,4 @@
-from .api import UserSerializer, RegionSerializer, DistrictSerializer, QuestionSerializer, Answer
+from .serializers import UserSerializer, RegionSerializer, DistrictSerializer, QuestionSerializer, AnswerSerializer
 from .models import User, Region, District, Question, Answer
 from rest_framework import viewsets
 
