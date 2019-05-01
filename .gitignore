@@ -3,4 +3,3 @@ creamie/secrets.py
 /static
 /.media
 db.sqlite3
-/.static
