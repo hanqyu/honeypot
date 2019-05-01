@@ -2,7 +2,7 @@ from .models import User, Region, District, Question, Answer
 from rest_framework import serializers, viewsets
 from django.conf import settings
 from rest_framework import permissions
-from rest_framework.response import Response
+from django.contrib.auth import authenticate
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -12,6 +12,18 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class CreateUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('email', 'username', 'password', 'is_avatar')
+        extra_kwargs = {"password": {"write_only": True}}
 
     def create(self, validated_data):
         """
@@ -34,9 +46,15 @@ class UserSerializer(serializers.ModelSerializer):
             return instance
 
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+class LoginUserSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    password = serializers.CharField()
+
+    def validate(self, data):
+        user = authenticate(**data)
+        if user and user.is_active:
+            return user
+        raise serializers.ValidationError("Unable to log in with provided credentials.")
 
 
 class RegionSerializer(serializers.ModelSerializer):
@@ -76,6 +94,9 @@ class QuestionSerializer(serializers.ModelSerializer):
         model = Question
         fields = ('user', 'region', 'anonymous', 'content', 'answer')
         # fields = ('user', 'username', 'region', 'anonymous', 'content', 'answer')
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 
 class QuestionViewSet(viewsets.ModelViewSet):

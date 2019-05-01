@@ -13,6 +13,8 @@ router.register('region', api.RegionViewSet)
 router.register('district', api.DistrictViewSet)
 router.register('question', api.QuestionViewSet)
 router.register('answer', api.AnswerViewSet)
+router.register('create_user', api.CreateUserSerializer)
+router.register('login_user', api.CreateUserSerializer)
 
 
 urlpatterns = [
@@ -22,7 +24,8 @@ urlpatterns = [
     url(r'^v1/', include((router.urls, 'district'), namespace='district')),
     url(r'^v1/', include((router.urls, 'question'), namespace='question')),
     url(r'^v1/', include((router.urls, 'answer'), namespace='answer')),
-
+    url(r'^v1/', include((router.urls, 'create_user'), namespace='create_user')),
+    url(r'^v1/', include((router.urls, 'login_user'), namespace='login_user')),
 ]
 
 urlpatterns += [
