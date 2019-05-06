@@ -114,20 +114,18 @@ AUTH_PASSWORD_VALIDATORS = [
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.pagination.LimitOffsetPagination',
     ),
-    'DEFAULT_AUTHENTICATION_CLASSES': [
+    'PAGE_SIZE': 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ],
+    ),
 }
 
 if DEBUG:
-    REST_FRAMEWORK = {
-        'DEFAULT_PERMISSION_CLASSES': (
-            'rest_framework.permissions.AllowAny',
-        )
-    }
-
-
+    REST_FRAMEWORK['DEFAULT_PERMISSION_CLASSES'] = (
+        'rest_framework.permissions.AllowAny',
+    )
 
 # Auth User Model (Customized)
 AUTH_USER_MODEL = 'api.User'
@@ -152,10 +150,9 @@ USE_TZ = True
 
 ROOT_DIR = os.path.dirname(BASE_DIR)
 
-if not DEBUG:
+if DEBUG is not True:
     STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(ROOT_DIR, '.static')
-
 
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(ROOT_DIR, '.media')

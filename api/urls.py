@@ -1,21 +1,26 @@
 from django.conf.urls import url
 from django.urls import path
-from . import views
+from .views import (
+    UserViewSet,
+    RegionViewSet,
+    DistrictViewSet,
+    QuestionViewSet,
+    AnswerViewSet,
+    RegistrationAPI,
+    LoginAPI,
+)
 from django.urls import include
 from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
-from rest_framework_simplejwt import views as jwt_views
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 
 router = routers.DefaultRouter()
-router.register('user', views.UserViewSet)
-router.register('region', views.RegionViewSet)
-router.register('district', views.DistrictViewSet)
-router.register('question', views.QuestionViewSet)
-router.register('answer', views.AnswerViewSet)
-# router.register('create_user', views.CreateUserSerializer)
-# router.register('login_user', views.LoginUserSerializer)
-
+router.register('user', UserViewSet)
+router.register('region', RegionViewSet)
+router.register('district', DistrictViewSet)
+router.register('question', QuestionViewSet)
+router.register('answer', AnswerViewSet)
 
 urlpatterns = [
     url(r'^doc', get_swagger_view(title='Rest API Document')),
@@ -24,12 +29,15 @@ urlpatterns = [
     url(r'^v1/', include((router.urls, 'district'), namespace='district')),
     url(r'^v1/', include((router.urls, 'question'), namespace='question')),
     url(r'^v1/', include((router.urls, 'answer'), namespace='answer')),
-    # url(r'^v1/', include((router.urls, 'create_user'), namespace='create_user')),
-    # url(r'^v1/', include((router.urls, 'login_user'), namespace='login_user')),
+]
+
+urlpatterns += [
+    url(r'^v1/auth/register/', RegistrationAPI.as_view()),
+    url(r'^v1/auth/login/', LoginAPI.as_view()),
 ]
 
 
 urlpatterns += [
-    url(r'^token/$', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    url(r'^token/refresh/$', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    url(r'^token/$', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    url(r'^token/refresh/$', TokenRefreshView.as_view(), name='token_refresh'),
 ]

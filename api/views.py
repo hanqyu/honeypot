@@ -14,9 +14,9 @@ from .models import (
     Question,
     Answer
 )
-from rest_framework import viewsets, permissions, generics
+from .tokens import Token
+from rest_framework import viewsets, permissions, generics, status
 from rest_framework.response import Response
-from knox.models import AuthToken
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -46,10 +46,14 @@ class AnswerViewSet(viewsets.ModelViewSet):
 
 class RegistrationAPI(generics.GenericAPIView):
     serializer_class = CreateUserSerializer
+    permissions_classes = (permissions.AllowAny, )
 
     def post(self, request, *args, **kwargs):
-        if len(request.data["username"]) < 6 or len(request.data["password"]) < 4:
-            body = {"message": "short field"}
+        if len(request.data["username"]) < 2:
+            body = {"message": "short username"}
+            return Response(body, status=status.HTTP_400_BAD_REQUEST)
+        if len(request.data["password"]) < 6:
+            body = {"message": "short password"}
             return Response(body, status=status.HTTP_400_BAD_REQUEST)
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -59,7 +63,7 @@ class RegistrationAPI(generics.GenericAPIView):
                 "user": UserSerializer(
                     user, context=self.get_serializer_context()
                 ).data,
-                "token": AuthToken.objects.create(user),
+                "token": Token(user).token,
             }
         )
 
@@ -71,12 +75,13 @@ class LoginAPI(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data
+
         return Response(
             {
                 "user": UserSerializer(
                     user, context=self.get_serializer_context()
                 ).data,
-                "token": AuthToken.objects.create(user),
+                "token": Token(user).token,
             }
         )
 

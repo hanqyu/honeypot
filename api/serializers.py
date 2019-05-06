@@ -1,23 +1,24 @@
 from .models import User, Region, District, Question, Answer
-from rest_framework import serializers, viewsets
+from rest_framework import serializers
 from django.conf import settings
 from rest_framework import permissions
 from django.contrib.auth import authenticate
 
 
 class UserSerializer(serializers.ModelSerializer):
-    question = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    answer = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    # question = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    # answer = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = User
         fields = '__all__'
+        # fields = ('id', 'email', 'username')
 
 
 class CreateUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('email', 'username', 'password', 'is_avatar')
+        fields = ('email', 'username', 'password')
         extra_kwargs = {"password": {"write_only": True}}
 
     def create(self, validated_data):
@@ -32,12 +33,12 @@ class CreateUserSerializer(serializers.ModelSerializer):
             email = validated_data.pop("email")
             password = validated_data.pop("password")
 
-            groups = validated_data.pop("groups")
-            user_permissions = validated_data.pop("user_permissions")
+            # groups = validated_data.pop("groups")
+            # user_permissions = validated_data.pop("user_permissions")
 
             instance = User.objects.create_user(email, password=password, **validated_data)
-            instance.groups.set(groups)
-            instance.groups.set(user_permissions)
+            # instance.groups.set(groups)
+            # instance.groups.set(user_permissions)
             return instance
 
 
