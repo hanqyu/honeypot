@@ -22,6 +22,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
     bio = models.CharField(max_length=50, null=True, blank=True)
+    is_staff = models.BooleanField(default=False)
     region = models.ForeignKey('Region', on_delete=models.SET_NULL, null=True)
 
     objects = UserManager.UserManager()
