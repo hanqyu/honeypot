@@ -1,4 +1,4 @@
-from .models import User, Region, District, Question, Answer
+from .models import User, Region, District, Question, Answer, Category
 from rest_framework import serializers
 from django.conf import settings
 from rest_framework import permissions
@@ -71,15 +71,14 @@ class DistrictSerializer(serializers.ModelSerializer):
 class QuestionSerializer(serializers.ModelSerializer):
     answer = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     # username = serializers.Field(source='user.username')
-    permissions_classes = (permissions.IsAuthenticated, )
 
     if not settings.DEBUG:
         tag = serializers.ListField(child=serializers.IntegerField())
 
     class Meta:
         model = Question
-        fields = ('user', 'region', 'anonymous', 'content', 'answer')
-        # fields = ('user', 'username', 'region', 'anonymous', 'content', 'answer')
+        fields = ('user', 'region', 'anonymous', 'text', 'answer')
+        # fields = ('user', 'username', 'region', 'anonymous', 'text', 'answer')
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -91,3 +90,7 @@ class AnswerSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'

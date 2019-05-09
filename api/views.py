@@ -87,8 +87,25 @@ class LoginAPI(generics.GenericAPIView):
 
 
 class UserAPI(generics.RetrieveAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = (permissions.IsAuthenticated, )
     serializer_class = UserSerializer
 
     def get_object(self):
         return self.request.user
+
+
+class QuestionAPI(generics.GenericAPIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = QuestionSerializer
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        question = serializer.save()
+        return Response(
+            {
+                "question_id": QuestionSerializer(
+                    question, context=self.get_serializer_context()
+                ).data
+            }
+        )
