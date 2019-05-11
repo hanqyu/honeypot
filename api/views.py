@@ -181,8 +181,8 @@ class ChangeBoolAPI(generics.UpdateAPIView):
         return response
 
     @staticmethod
-    def __error_invalid_request_user(request, authorized_user):
-        if request.user.id != authorized_user:
+    def __error_invalid_request_user(request, authorized_user_id):
+        if request.user.id != authorized_user_id:
             body = {"message": "invalid user to request"}
             return Response(body, status=status.HTTP_403_FORBIDDEN)
 
@@ -206,7 +206,7 @@ class SelectAnswerAPI(ChangeBoolAPI):
         body = {"message": ''}
         answer = self.get_object(self.kwargs['pk'])
 
-        self.__error_invalid_request_user(request, authorized_user=answer.question.user_id)
+        self.__error_invalid_request_user(request, authorized_user_id=answer.question.user_id)
 
         question = self.get_question(pk=answer.question_id)
         if question.has_selected_answer:
@@ -228,3 +228,5 @@ class SelectAnswerAPI(ChangeBoolAPI):
 
 
 # TODO : request.data['user'] = request.user.id -> decorator로 처리
+
+class RecentQuestionAPI()
