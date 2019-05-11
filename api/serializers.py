@@ -3,6 +3,8 @@ from rest_framework import serializers
 from django.conf import settings
 from rest_framework import permissions
 from django.contrib.auth import authenticate
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.authtoken.models import Token
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -11,8 +13,9 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = '__all__'
-        # fields = ('id', 'email', 'username')
+        exclude = ('password',)
+
+    # def get_object_by_email(self, email):
 
 
 class CreateUserSerializer(serializers.ModelSerializer):
@@ -60,6 +63,7 @@ class RegionSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+
 class DistrictSerializer(serializers.ModelSerializer):
     region = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
@@ -77,14 +81,13 @@ class QuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Question
-        fields = ('user', 'region', 'anonymous', 'text', 'answer')
-        # fields = ('user', 'username', 'region', 'anonymous', 'text', 'answer')
-
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        fields = ('user', 'region', 'anonymous', 'text', 'answer', 'used_voting', 'category')
 
 
 class AnswerSerializer(serializers.ModelSerializer):
+    question = serializers.PrimaryKeyRelatedField(read_only=True)
+    question_user = serializers.SlugRelatedField(read_only=True, slug_field='user_id')
+
     class Meta:
         model = Answer
         fields = '__all__'

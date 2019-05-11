@@ -4,6 +4,7 @@ from .serializers import (
     DistrictSerializer,
     QuestionSerializer,
     AnswerSerializer,
+    CategorySerializer,
     CreateUserSerializer,
     LoginUserSerializer,
 )
@@ -12,11 +13,12 @@ from .models import (
     Region,
     District,
     Question,
-    Answer
+    Answer,
+    Category
 )
-from .tokens import Token
 from rest_framework import viewsets, permissions, generics, status
 from rest_framework.response import Response
+from .tokens import TokenSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -44,11 +46,20 @@ class AnswerViewSet(viewsets.ModelViewSet):
     serializer_class = AnswerSerializer
 
 
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+
 class RegistrationAPI(generics.GenericAPIView):
     serializer_class = CreateUserSerializer
     permissions_classes = (permissions.AllowAny, )
 
     def post(self, request, *args, **kwargs):
+        '''
+        :param request: must have username, email, password
+        :return: user and token
+        '''
         if len(request.data["username"]) < 2:
             body = {"message": "short username"}
             return Response(body, status=status.HTTP_400_BAD_REQUEST)
@@ -63,7 +74,7 @@ class RegistrationAPI(generics.GenericAPIView):
                 "user": UserSerializer(
                     user, context=self.get_serializer_context()
                 ).data,
-                "token": Token(user).token,
+                "token": TokenSerializer(user).token,
             }
         )
 
@@ -81,7 +92,7 @@ class LoginAPI(generics.GenericAPIView):
                 "user": UserSerializer(
                     user, context=self.get_serializer_context()
                 ).data,
-                "token": Token(user).token,
+                "token": TokenSerializer(user).token,
             }
         )
 
@@ -104,8 +115,11 @@ class QuestionAPI(generics.GenericAPIView):
         question = serializer.save()
         return Response(
             {
-                "question_id": QuestionSerializer(
+                "result": QuestionSerializer(
                     question, context=self.get_serializer_context()
                 ).data
             }
         )
+
+
+

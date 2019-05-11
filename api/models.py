@@ -19,10 +19,11 @@ from .managers import UserManager
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=30, blank=True)
+    avatar = models.ImageField(upload_to='avatars/', blank=True, default='avatars/defaut.jpg')
+    bio = models.CharField(max_length=50, blank=True, default='')
     is_active = models.BooleanField(default=True)
-    avatar = models.ImageField(upload_to='avatars/', null=True, blank=True)
-    bio = models.CharField(max_length=50, null=True, blank=True)
     is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
     region = models.ForeignKey('Region', on_delete=models.SET_NULL, null=True)
     updated_at = models.TimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -57,13 +58,15 @@ class Question(models.Model):
     '''
     :param region: option.
     '''
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=False, related_name='question')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='question')
     region = models.ForeignKey('Region', on_delete=models.SET_NULL, null=True, related_name='question')
     anonymous = models.BooleanField(default=True)
-    text = models.CharField(max_length=1000, blank=False, null=False)
-    used_voting = models.IntegerField(default=0, null=False, blank=False, validators=(MinValueValidator(0),))
+    text = models.CharField(max_length=1000)
+    used_voting = models.IntegerField(default=0, validators=(MinValueValidator(0),))
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, related_name='question')
-    adopted_answer = models.ForeignKey('Answer', on_delete=models.SET_NULL, default=None, null=True, related_name='question_adopted_to')
+    selected_answer = models.ForeignKey('Answer', on_delete=models.SET_NULL, default=None, null=True, related_name='question_selected_to')
+    has_selected_answer = models.BooleanField(default=False)
+    answer_count = models.IntegerField(default=0)
     # image = models.ImageField(upload_to='question_images/')
     updated_at = models.TimeField(auto_now=True)
     created_at = models.TimeField(auto_now_add=True)
@@ -78,11 +81,11 @@ class QuestionVote(models.Model):
 
 
 class Answer(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=False, related_name='answer')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='answer')
     question = models.ForeignKey('Question', on_delete=models.SET_NULL, null=True, related_name='answer')
     anonymous = models.BooleanField(default=True)
-    text = models.CharField(max_length=3000, blank=False, null=False)
-    is_adopted = models.BooleanField(default=False)
+    text = models.CharField(max_length=3000)
+    is_selected = models.BooleanField(default=False)
     # image = models.ImageField(upload_to='answer_images/')
     updated_at = models.TimeField(auto_now=True)
     created_at = models.TimeField(auto_now_add=True)
@@ -92,7 +95,7 @@ class Answer(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=30, blank=False, null=False)
+    name = models.CharField(max_length=30)
     updated_at = models.TimeField(auto_now=True)
     created_at = models.TimeField(auto_now_add=True)
 

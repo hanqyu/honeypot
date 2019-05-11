@@ -14,6 +14,7 @@ import os
 import json
 from django.core.exceptions import ImproperlyConfigured
 from creamie import secrets
+from datetime import timedelta
 
 
 # Build paths inside the project like this: os.path.join
@@ -27,7 +28,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'localhost', 'api-test.hanqyu.com',
-                 'ec2-13-209-111-182.ap-northeast-2.compute.amazonaws.com', '13.209.111.182']
+                 'ec2-13-209-111-182.ap-northeast-2.compute.amazonaws.com', '13.209.111.182', ]
+
+if DEBUG:
+    ALLOWED_HOSTS += 'testserver'
 
 secrets.main()
 SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -128,6 +132,33 @@ if DEBUG:
     REST_FRAMEWORK['DEFAULT_PERMISSION_CLASSES'] = (
         'rest_framework.permissions.AllowAny',
     )
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+    'VERIFYING_KEY': None,
+
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'token_type',
+
+    'JTI_CLAIM': 'jti',
+
+    'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
+    'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
+    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
+}
+
+if DEBUG:
+    SIMPLE_JWT['ACCESS_TOKEN_LIFETIME'] = timedelta(days=5),
 
 # Auth User Model (Customized)
 AUTH_USER_MODEL = 'api.User'

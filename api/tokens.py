@@ -1,10 +1,11 @@
 from rest_framework_simplejwt.tokens import RefreshToken
 
 
-class Token:
-    def __init__(self, user):
-        self.user = user
-        self.token = self.get_tokens_for_user()
+class TokenSerializer:
+    def __init__(self, user=None, token=None):
+        if user:
+            self.user = user
+            self.token = self.get_tokens_for_user()
 
     def get_tokens_for_user(self):
         refresh = RefreshToken.for_user(self.user)
@@ -13,3 +14,4 @@ class Token:
             'refresh': str(refresh),
             'access': str(refresh.access_token),
         }
+
