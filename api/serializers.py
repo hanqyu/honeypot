@@ -84,8 +84,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 
 
 class AnswerSerializer(serializers.ModelSerializer):
-    question = serializers.PrimaryKeyRelatedField(read_only=True)
-    questioned_user = serializers.SlugRelatedField(read_only=True, slug_field='user_id')
+    # questioned_user = serializers.SlugRelatedField(read_only=True, slug_field='user_id')
 
     class Meta:
         model = Answer

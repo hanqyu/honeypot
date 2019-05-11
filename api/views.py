@@ -115,18 +115,18 @@ class QuestionAPI(generics.GenericAPIView):
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        question = serializer.save()
+        instance = serializer.save()
         return Response(
             {
                 "result": QuestionSerializer(
-                    question, context=self.get_serializer_context()
+                    instance, context=self.get_serializer_context()
                 ).data
             })
 
     def patch(self, request):
         pk = request.data["pk"]
-        question = self.get_object(pk)
-        serializer = self.get_serializer(question, data=request.data, partial=True)
+        instance = self.get_object(pk)
+        serializer = self.get_serializer(instance, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
         response = serializer.save()
         return Response(
@@ -135,3 +135,96 @@ class QuestionAPI(generics.GenericAPIView):
                 "result": QuestionSerializer(response).data
             })
 
+
+class AnswerAPI(generics.GenericAPIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = AnswerSerializer
+
+    def get_object(self, pk):
+        return Answer.objects.get(pk=pk)
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        instance = serializer.save()
+        return Response(
+            {
+                "result": AnswerSerializer(
+                    instance, context=self.get_serializer_context()
+                ).data
+            }
+        )
+
+    def patch(self, request):
+        pk = request.data["pk"]
+        instance = self.get_object(pk)
+        serializer = self.get_serializer(instance, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        response = serializer.save()
+        return Response(
+            status=204,
+            data={
+                "result": AnswerSerializer(response).data
+            })
+
+
+class ChangeBoolAPI(generics.UpdateAPIView):
+
+    def change_bool(self, request, field, *args, **kwargs):
+        from django.forms.models import model_to_dict
+        instance = self.get_object(self.kwargs['pk'])
+        _dict = model_to_dict(instance)
+        _dict[field] = not _dict[field]
+        serializer = self.get_serializer(instance, partial=True, data=_dict)
+        serializer.is_valid(raise_exception=True)
+        response = serializer.save()
+        return response
+
+    @staticmethod
+    def __error_invalid_request_user(request, authorized_user):
+        if request.user.id != authorized_user:
+            body = {"message": "invalid user to request"}
+            return Response(body, status=status.HTTP_403_FORBIDDEN)
+
+
+class SelectAnswerAPI(ChangeBoolAPI):
+    permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = AnswerSerializer
+    question_serializer = QuestionSerializer
+
+    def get_queryset(self):
+        return Answer.objects.filter(pk=self.kwargs['pk']).first()
+
+    def get_object(self, pk):
+        return Answer.objects.get(pk=pk)
+
+    @staticmethod
+    def get_question(pk):
+        return Question.objects.get(pk=pk)
+
+    def post(self, request, *args, **kwargs):
+        body = {"message": ''}
+        answer = self.get_object(self.kwargs['pk'])
+
+        self.__error_invalid_request_user(request, authorized_user=answer.question.user_id)
+
+        question = self.get_question(pk=answer.question_id)
+        if question.has_selected_answer:
+            body["message"] = "already selected another answer"
+            return Response(body, status=status.HTTP_406_NOT_ACCEPTABLE)
+
+        if answer.is_selected:
+            body["message"] = "the answer is already selected"
+            return Response(body, status=status.HTTP_406_NOT_ACCEPTABLE)
+
+        response = self.change_bool(request, field='is_selected')
+        question.has_selected_answer = True
+        question.save()
+        return Response(
+            status=204,
+            data={
+                "result": AnswerSerializer(response).data
+            })
+
+
+# TODO : request.data['user'] = request.user.id -> decorator로 처리

@@ -2,7 +2,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 
 class TokenSerializer:
-    def __init__(self, user=None, token=None):
+    def __init__(self, user=None):
         if user:
             self.user = user
             self.token = self.get_tokens_for_user()

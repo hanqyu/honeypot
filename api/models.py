@@ -25,7 +25,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     region = models.ForeignKey('Region', on_delete=models.SET_NULL, null=True)
-    updated_at = models.TimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     objects = UserManager.UserManager()
@@ -68,8 +68,8 @@ class Question(models.Model):
     has_selected_answer = models.BooleanField(default=False)
     answer_count = models.IntegerField(default=0)
     # image = models.ImageField(upload_to='question_images/')
-    updated_at = models.TimeField(auto_now=True)
-    created_at = models.TimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         managed = True
@@ -78,7 +78,7 @@ class Question(models.Model):
 class QuestionVote(models.Model):
     question = models.ForeignKey('Question', on_delete=)
 '''
-
+# Answer.objects.filter(pk=1).first()._do_update()
 
 class Answer(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='answer')
@@ -87,8 +87,8 @@ class Answer(models.Model):
     text = models.CharField(max_length=3000)
     is_selected = models.BooleanField(default=False)
     # image = models.ImageField(upload_to='answer_images/')
-    updated_at = models.TimeField(auto_now=True)
-    created_at = models.TimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         managed = True
@@ -96,8 +96,8 @@ class Answer(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=30)
-    updated_at = models.TimeField(auto_now=True)
-    created_at = models.TimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         managed = True
@@ -105,8 +105,8 @@ class Category(models.Model):
 
 class Tag(models.Model):
     name = models.CharField(max_length=20)
-    updated_at = models.TimeField(auto_now=True)
-    created_at = models.TimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         managed = True
@@ -119,8 +119,11 @@ class QuestionTag(models.Model):
         managed = True
 '''
 
+
 class District(models.Model):
     name = models.CharField(max_length=20)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         managed = True
@@ -129,6 +132,8 @@ class District(models.Model):
 class Region(models.Model):
     name = models.CharField(max_length=20)
     district = models.ForeignKey('District', on_delete=models.PROTECT, null=True, related_name='region')
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         managed = True

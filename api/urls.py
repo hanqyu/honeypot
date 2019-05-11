@@ -6,10 +6,13 @@ from .views import (
     DistrictViewSet,
     QuestionViewSet,
     AnswerViewSet,
+    CategoryViewSet,
     RegistrationAPI,
     QuestionAPI,
     LoginAPI,
     UserAPI,
+    AnswerAPI,
+    SelectAnswerAPI,
 )
 from django.urls import include
 from rest_framework import routers
@@ -23,7 +26,7 @@ router.register('region', RegionViewSet)
 router.register('district', DistrictViewSet)
 router.register('question', QuestionViewSet)
 router.register('answer', AnswerViewSet)
-router.register('category', AnswerViewSet)
+router.register('category', CategoryViewSet)
 
 urlpatterns = [
     url(r'^doc', get_swagger_view(title='Rest API Document')),
@@ -36,10 +39,12 @@ urlpatterns = [
 ]
 
 urlpatterns += [
-    url(r'^v1/auth/register/', RegistrationAPI.as_view()),
-    url(r'^v1/auth/login/', LoginAPI.as_view()),
-    url(r'^v1/auth/user/', UserAPI.as_view()),
-    url(r'^v1/question/', QuestionAPI.as_view()),
+    url(r'^v1/auth/register/$', RegistrationAPI.as_view()),
+    url(r'^v1/auth/login/$', LoginAPI.as_view()),
+    url(r'^v1/auth/user/$', UserAPI.as_view()),
+    url(r'^v1/question/$', QuestionAPI.as_view()),
+    url(r'^v1/answer/$', AnswerAPI.as_view()),
+    url(r'^v1/answer/(?P<pk>\d+)/select/$', SelectAnswerAPI.as_view()),
 ]
 
 
