@@ -21,18 +21,18 @@ router = routers.DefaultRouter()
 router.register('user', UserViewSet)
 router.register('region', RegionViewSet)
 router.register('district', DistrictViewSet)
-# router.register('question', QuestionViewSet)
+router.register('question', QuestionViewSet)
 router.register('answer', AnswerViewSet)
 router.register('category', AnswerViewSet)
 
 urlpatterns = [
     url(r'^doc', get_swagger_view(title='Rest API Document')),
-    url(r'^v1/', include((router.urls, 'user'), namespace='user')),
-    url(r'^v1/', include((router.urls, 'region'), namespace='region')),
-    url(r'^v1/', include((router.urls, 'district'), namespace='district')),
-    # url(r'^v1/', include((router.urls, 'question'), namespace='question')),
-    url(r'^v1/', include((router.urls, 'answer'), namespace='answer')),
-    url(r'^v1/', include((router.urls, 'category'), namespace='category')),
+    url(r'^v1/view/', include((router.urls, 'user'), namespace='user')),
+    url(r'^v1/view/', include((router.urls, 'region'), namespace='region')),
+    url(r'^v1/view/', include((router.urls, 'district'), namespace='district')),
+    url(r'^v1/view/', include((router.urls, 'question'), namespace='question')),
+    url(r'^v1/view/', include((router.urls, 'answer'), namespace='answer')),
+    url(r'^v1/view/', include((router.urls, 'category'), namespace='category')),
 ]
 
 urlpatterns += [

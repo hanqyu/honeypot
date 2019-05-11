@@ -63,7 +63,6 @@ class RegionSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
 class DistrictSerializer(serializers.ModelSerializer):
     region = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
@@ -81,12 +80,12 @@ class QuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Question
-        fields = ('user', 'region', 'anonymous', 'text', 'answer', 'used_voting', 'category')
+        fields = '__all__'
 
 
 class AnswerSerializer(serializers.ModelSerializer):
     question = serializers.PrimaryKeyRelatedField(read_only=True)
-    question_user = serializers.SlugRelatedField(read_only=True, slug_field='user_id')
+    questioned_user = serializers.SlugRelatedField(read_only=True, slug_field='user_id')
 
     class Meta:
         model = Answer

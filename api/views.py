@@ -109,6 +109,9 @@ class QuestionAPI(generics.GenericAPIView):
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = QuestionSerializer
 
+    def get_object(self, pk):
+        return Question.objects.get(pk=pk)
+
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -118,8 +121,17 @@ class QuestionAPI(generics.GenericAPIView):
                 "result": QuestionSerializer(
                     question, context=self.get_serializer_context()
                 ).data
-            }
-        )
+            })
 
-
+    def patch(self, request):
+        pk = request.data["pk"]
+        question = self.get_object(pk)
+        serializer = self.get_serializer(question, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        response = serializer.save()
+        return Response(
+            status=204,
+            data={
+                "result": QuestionSerializer(response).data
+            })
 
