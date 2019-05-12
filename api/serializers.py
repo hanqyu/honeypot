@@ -99,10 +99,7 @@ class AnswerSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_photo_url(self, obj):
-        try:
-            request = self.context.get('request')
-        except AttributeError:
-            request = self.context
+        request = self.context.get('request')
         avatar_url = obj.user.avatar.url
         return request.build_absolute_uri(avatar_url)
 

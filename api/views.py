@@ -132,7 +132,7 @@ class QuestionAPI(generics.GenericAPIView):
         return Response(
             status=204,
             data={
-                "result": QuestionSerializer(response, context=request).data
+                "result": QuestionSerializer(response, context=self.get_serializer_context()).data
             })
 
     def get(self, request, *args, **kwargs):
@@ -141,7 +141,7 @@ class QuestionAPI(generics.GenericAPIView):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
         answers = Answer.objects.filter(pk__in=serializer.data['answer']).all()
-        result = AnswerSerializer(answers, context=request, many=True).data
+        result = AnswerSerializer(answers, context=self.get_serializer_context(), many=True).data
 
         return Response(
             status=200,
@@ -178,7 +178,7 @@ class AnswerAPI(generics.GenericAPIView):
         return Response(
             status=204,
             data={
-                "result": AnswerSerializer(response, context=request).data
+                "result": AnswerSerializer(response, context=self.get_serializer_context()).data
             })
 
 
@@ -235,7 +235,7 @@ class SelectAnswerAPI(ChangeBoolAPI):
         return Response(
             status=204,
             data={
-                "result": AnswerSerializer(response, context=request).data
+                "result": AnswerSerializer(response, context=self.get_serializer_context()).data
             })
 
 
@@ -253,7 +253,7 @@ class RecentQuestionAPI(generics.RetrieveAPIView):
     def post(self, request, *args, **kwargs):
         count = max(request.data['count'], self.max_count)
         qs = self.get_queryset()[:count].all()
-        serializer = self.get_serializer(qs, context=request, many=True)
+        serializer = self.get_serializer(qs, context=self.get_serializer_context(), many=True)
         result = serializer.data
 
         return Response(
