@@ -103,7 +103,7 @@ class UserTest(Test):
 
 
 
-response = RegisterTest(fail='duplicate_email').test(ver='client')
+response = RegisterTest(fail_test='duplicate_email').test(ver='client')
 
 TokenSerializer(token=Test().token)
 

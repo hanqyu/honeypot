@@ -19,6 +19,7 @@ from .models import (
 from rest_framework import viewsets, permissions, generics, status
 from rest_framework.response import Response
 from .tokens import TokenSerializer
+from django.forms.models import model_to_dict
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -108,9 +109,13 @@ class UserAPI(generics.RetrieveAPIView):
 class QuestionAPI(generics.GenericAPIView):
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = QuestionSerializer
+    answer_serializer = AnswerSerializer
 
     def get_object(self, pk):
         return Question.objects.get(pk=pk)
+
+    # def get_serializer_class(self):
+    #     if self.action is 'list':
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -133,6 +138,21 @@ class QuestionAPI(generics.GenericAPIView):
             status=204,
             data={
                 "result": QuestionSerializer(response).data
+            })
+
+    def get(self, request, *args, **kwargs):
+        pk = kwargs['pk']
+        instance = self.get_object(pk)
+        serializer = self.get_serializer(instance)
+        answers = Answer.objects.filter(pk__in=serializer.data['answer']).all()
+        result = AnswerSerializer(answers, context=request, many=True).data
+
+        return Response(
+            status=200,
+            data={
+                "question_id": instance.id,
+                "questioned_user": instance.user_id,
+                "result": result
             })
 
 
@@ -171,7 +191,6 @@ class AnswerAPI(generics.GenericAPIView):
 class ChangeBoolAPI(generics.UpdateAPIView):
 
     def change_bool(self, request, field, *args, **kwargs):
-        from django.forms.models import model_to_dict
         instance = self.get_object(self.kwargs['pk'])
         _dict = model_to_dict(instance)
         _dict[field] = not _dict[field]
@@ -179,12 +198,6 @@ class ChangeBoolAPI(generics.UpdateAPIView):
         serializer.is_valid(raise_exception=True)
         response = serializer.save()
         return response
-
-    @staticmethod
-    def __error_invalid_request_user(request, authorized_user_id):
-        if request.user.id != authorized_user_id:
-            body = {"message": "invalid user to request"}
-            return Response(body, status=status.HTTP_403_FORBIDDEN)
 
 
 class SelectAnswerAPI(ChangeBoolAPI):
@@ -201,6 +214,12 @@ class SelectAnswerAPI(ChangeBoolAPI):
     @staticmethod
     def get_question(pk):
         return Question.objects.get(pk=pk)
+
+    @staticmethod
+    def __error_invalid_request_user(request, authorized_user_id):
+        if request.user.id != authorized_user_id:
+            body = {"message": "invalid user to request"}
+            return Response(body, status=status.HTTP_403_FORBIDDEN)
 
     def post(self, request, *args, **kwargs):
         body = {"message": ''}
@@ -229,4 +248,26 @@ class SelectAnswerAPI(ChangeBoolAPI):
 
 # TODO : request.data['user'] = request.user.id -> decorator로 처리
 
-class RecentQuestionAPI()
+class RecentQuestionAPI(generics.RetrieveAPIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = QuestionSerializer
+    queryset = Question.objects.all()
+    max_count = 30
+
+    def get_queryset(self):
+        return self.queryset.order_by('-created_at')
+
+    def post(self, request, *args, **kwargs):
+        print(request.data)
+        count = max(request.data['count'], self.max_count)
+        qs = self.get_queryset()[:count].all()
+        serializer = self.get_serializer(qs, many=True)
+        result = serializer.data
+
+        return Response(
+            status=200,
+            data={
+                "result": result
+            }
+        )
+

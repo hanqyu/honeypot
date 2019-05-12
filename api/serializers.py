@@ -73,22 +73,33 @@ class DistrictSerializer(serializers.ModelSerializer):
 
 class QuestionSerializer(serializers.ModelSerializer):
     answer = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    # username = serializers.Field(source='user.username')
-
-    if not settings.DEBUG:
-        tag = serializers.ListField(child=serializers.IntegerField())
+    username = serializers.ReadOnlyField(source='user.username')
+    user_avatar = serializers.SerializerMethodField('get_photo_url')
+    user_is_active = serializers.ReadOnlyField(source='user.is_active')
 
     class Meta:
         model = Question
         fields = '__all__'
 
+    def get_photo_url(self, obj):
+        request = self.context.get('request')
+        avatar_url = obj.user.avatar.url
+        return request.build_absolute_uri(avatar_url)
+
 
 class AnswerSerializer(serializers.ModelSerializer):
-    # questioned_user = serializers.SlugRelatedField(read_only=True, slug_field='user_id')
+    username = serializers.ReadOnlyField(source='user.username')
+    user_avater = serializers.SerializerMethodField('get_photo_url')
 
     class Meta:
         model = Answer
         fields = '__all__'
+
+    def get_photo_url(self, obj):
+        request = self.context
+        avatar_url = obj.user.avatar.url
+        # return obj.user.avatar.url
+        return request.build_absolute_uri(avatar_url)
 
 
 class CategorySerializer(serializers.ModelSerializer):

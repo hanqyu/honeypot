@@ -19,7 +19,7 @@ from .managers import UserManager
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=30, blank=True)
-    avatar = models.ImageField(upload_to='avatars/', blank=True, default='avatars/defaut.jpg')
+    avatar = models.ImageField(upload_to='avatars/', blank=True, default='avatars/default.jpg')
     bio = models.CharField(max_length=50, blank=True, default='')
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -72,13 +72,15 @@ class Question(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
+        verbose_name = _('question')
+        verbose_name_plural = _('questions')
         managed = True
 
 '''
 class QuestionVote(models.Model):
     question = models.ForeignKey('Question', on_delete=)
 '''
-# Answer.objects.filter(pk=1).first()._do_update()
+
 
 class Answer(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='answer')
@@ -91,6 +93,8 @@ class Answer(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
+        verbose_name = _('answer')
+        verbose_name_plural = _('answers')
         managed = True
 
 
@@ -100,22 +104,19 @@ class Category(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
+        verbose_name = _('category')
+        verbose_name_plural = _('categories')
         managed = True
 
-
+'''
 class Tag(models.Model):
     name = models.CharField(max_length=20)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        managed = True
-
-'''
-class QuestionTag(models.Model):
-    name = models.CharField(max_length=20)
-
-    class Meta:
+        verbose_name = _('tag')
+        verbose_name_plural = _('tags')
         managed = True
 '''
 
@@ -126,6 +127,8 @@ class District(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
+        verbose_name = _('district')
+        verbose_name_plural = _('districts')
         managed = True
 
 
@@ -136,4 +139,6 @@ class Region(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
+        verbose_name = _('region')
+        verbose_name_plural = _('regions')
         managed = True
