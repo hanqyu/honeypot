@@ -82,23 +82,28 @@ class QuestionSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def get_photo_url(self, obj):
-        request = self.context.get('request')
+        try:
+            request = self.context.get('request')
+        except AttributeError:
+            request = self.context
         avatar_url = obj.user.avatar.url
         return request.build_absolute_uri(avatar_url)
 
 
 class AnswerSerializer(serializers.ModelSerializer):
     username = serializers.ReadOnlyField(source='user.username')
-    user_avater = serializers.SerializerMethodField('get_photo_url')
+    user_avatar = serializers.SerializerMethodField('get_photo_url')
 
     class Meta:
         model = Answer
         fields = '__all__'
 
     def get_photo_url(self, obj):
-        request = self.context
+        try:
+            request = self.context.get('request')
+        except AttributeError:
+            request = self.context
         avatar_url = obj.user.avatar.url
-        # return obj.user.avatar.url
         return request.build_absolute_uri(avatar_url)
 
 

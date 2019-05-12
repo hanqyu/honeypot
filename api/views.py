@@ -111,12 +111,6 @@ class QuestionAPI(generics.GenericAPIView):
     serializer_class = QuestionSerializer
     answer_serializer = AnswerSerializer
 
-    def get_object(self, pk):
-        return Question.objects.get(pk=pk)
-
-    # def get_serializer_class(self):
-    #     if self.action is 'list':
-
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -128,21 +122,23 @@ class QuestionAPI(generics.GenericAPIView):
                 ).data
             })
 
-    def patch(self, request):
-        pk = request.data["pk"]
-        instance = self.get_object(pk)
+    def patch(self, request, *args, **kwargs):
+        pk = kwargs["pk"]
+        self.queryset = Question.objects.filter(pk=pk).all()
+        instance = self.get_object()
         serializer = self.get_serializer(instance, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
         response = serializer.save()
         return Response(
             status=204,
             data={
-                "result": QuestionSerializer(response).data
+                "result": QuestionSerializer(response, context=request).data
             })
 
     def get(self, request, *args, **kwargs):
-        pk = kwargs['pk']
-        instance = self.get_object(pk)
+        pk = kwargs["pk"]
+        self.queryset = Question.objects.filter(pk=pk).all()
+        instance = self.get_object()
         serializer = self.get_serializer(instance)
         answers = Answer.objects.filter(pk__in=serializer.data['answer']).all()
         result = AnswerSerializer(answers, context=request, many=True).data
@@ -160,9 +156,6 @@ class AnswerAPI(generics.GenericAPIView):
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = AnswerSerializer
 
-    def get_object(self, pk):
-        return Answer.objects.get(pk=pk)
-
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -175,23 +168,24 @@ class AnswerAPI(generics.GenericAPIView):
             }
         )
 
-    def patch(self, request):
-        pk = request.data["pk"]
-        instance = self.get_object(pk)
+    def patch(self, request, *args, **kwargs):
+        pk = kwargs["pk"]
+        self.queryset = Answer.objects.filter(pk=pk).all()
+        instance = self.get_object()
         serializer = self.get_serializer(instance, data=request.data, partial=True)
         serializer.is_valid(raise_exception=True)
         response = serializer.save()
         return Response(
             status=204,
             data={
-                "result": AnswerSerializer(response).data
+                "result": AnswerSerializer(response, context=request).data
             })
 
 
 class ChangeBoolAPI(generics.UpdateAPIView):
 
     def change_bool(self, request, field, *args, **kwargs):
-        instance = self.get_object(self.kwargs['pk'])
+        instance = self.get_object()
         _dict = model_to_dict(instance)
         _dict[field] = not _dict[field]
         serializer = self.get_serializer(instance, partial=True, data=_dict)
@@ -205,11 +199,8 @@ class SelectAnswerAPI(ChangeBoolAPI):
     serializer_class = AnswerSerializer
     question_serializer = QuestionSerializer
 
-    def get_queryset(self):
-        return Answer.objects.filter(pk=self.kwargs['pk']).first()
-
-    def get_object(self, pk):
-        return Answer.objects.get(pk=pk)
+    # def get_queryset(self):
+    #     return Answer.objects.filter(pk=self.kwargs['pk']).first()
 
     @staticmethod
     def get_question(pk):
@@ -223,7 +214,9 @@ class SelectAnswerAPI(ChangeBoolAPI):
 
     def post(self, request, *args, **kwargs):
         body = {"message": ''}
-        answer = self.get_object(self.kwargs['pk'])
+        pk = kwargs["pk"]
+        self.queryset = Answer.objects.filter(pk=pk).all()
+        answer = self.get_object()
 
         self.__error_invalid_request_user(request, authorized_user_id=answer.question.user_id)
 
@@ -242,7 +235,7 @@ class SelectAnswerAPI(ChangeBoolAPI):
         return Response(
             status=204,
             data={
-                "result": AnswerSerializer(response).data
+                "result": AnswerSerializer(response, context=request).data
             })
 
 
@@ -258,10 +251,9 @@ class RecentQuestionAPI(generics.RetrieveAPIView):
         return self.queryset.order_by('-created_at')
 
     def post(self, request, *args, **kwargs):
-        print(request.data)
         count = max(request.data['count'], self.max_count)
         qs = self.get_queryset()[:count].all()
-        serializer = self.get_serializer(qs, many=True)
+        serializer = self.get_serializer(qs, context=request, many=True)
         result = serializer.data
 
         return Response(
