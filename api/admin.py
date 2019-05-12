@@ -5,18 +5,28 @@ from django.http import HttpResponseRedirect
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['id', 'email', 'username', 'last_login', 'created_at', 'region', 'avatar', 'bio']
+    list_display = ('id', 'email', 'username', 'last_login', 'created_at', 'region', 'avatar', 'bio')
     list_filter = ('region',
-        ('created_at', DateRangeFilter),
-        ('last_login', DateRangeFilter),
-    )
-    search_fields = ['id', 'email', 'username']
+                   ('created_at', DateRangeFilter),
+                   ('last_login', DateRangeFilter),
+                   )
+    search_fields = ('id', 'email', 'username')
+
+
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user_id', 'region', 'anonymous', 'text', 'used_voting', 'category', 'selected_answer',
+                    'has_selected_answer', 'updated_at', 'created_at')
+    list_filter = ('category',
+                   'region',
+                   ('created_at', DateRangeFilter)
+                   )
+    search_fields = ('id', 'user', 'text')
 
 
 admin.site.register(User, UserAdmin)
 admin.site.register(Region)
 admin.site.register(District)
-admin.site.register(Question)
+admin.site.register(Question, QuestionAdmin)
 admin.site.register(Answer)
 admin.site.register(Category)
 

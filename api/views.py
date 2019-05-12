@@ -251,7 +251,10 @@ class RecentQuestionAPI(generics.RetrieveAPIView):
         return self.queryset.order_by('-created_at')
 
     def post(self, request, *args, **kwargs):
-        count = max(request.data['count'], self.max_count)
+        count = min(request.data['count'], self.max_count)
+        category = request.data.get('category')
+        if category:
+            self.queryset = self.queryset.filter(category=category).all()
         qs = self.get_queryset()[:count].all()
         serializer = self.get_serializer(qs, context=self.get_serializer_context(), many=True)
         result = serializer.data
@@ -259,6 +262,7 @@ class RecentQuestionAPI(generics.RetrieveAPIView):
         return Response(
             status=200,
             data={
+                "result_count": len(result),
                 "result": result
             }
         )
