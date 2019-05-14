@@ -1,4 +1,4 @@
-from .models import User, Region, District, Question, Answer, Category
+from .models import User, Region, District, Question, Answer, Category, QuestionVote
 from rest_framework import serializers
 from django.conf import settings
 from rest_framework import permissions
@@ -73,7 +73,7 @@ class DistrictSerializer(serializers.ModelSerializer):
 
 class QuestionSerializer(serializers.ModelSerializer):
     answer = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    username = serializers.ReadOnlyField(source='user.username')
+    user_name = serializers.ReadOnlyField(source='user.username')
     user_avatar = serializers.SerializerMethodField('get_photo_url')
     user_is_active = serializers.ReadOnlyField(source='user.is_active')
 
@@ -108,3 +108,13 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = '__all__'
+
+
+class QuestionVoteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = QuestionVote
+        fields = '__all__'
+        extra_kwargs = {
+            "updated_at": {"read_only": True},
+            "created_at": {"read_only": True}
+        }

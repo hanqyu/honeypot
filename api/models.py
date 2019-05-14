@@ -4,11 +4,9 @@ from django.db import models
 from django.contrib.postgres.fields import ArrayField
 from django.contrib.auth.models import User
 from django.dispatch import receiver
-from django.db.models.signals import post_save
 from django.conf import settings
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import MinValueValidator
 
-# from django.api.mail import send_mail
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.utils.translation import ugettext_lazy as _
@@ -20,7 +18,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=30, blank=True)
     avatar = models.ImageField(upload_to='avatars/', blank=True, default='avatars/default.jpg')
-    bio = models.CharField(max_length=50, blank=True, default='')
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
@@ -66,7 +63,7 @@ class Question(models.Model):
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, related_name='question')
     selected_answer = models.ForeignKey('Answer', on_delete=models.SET_NULL, default=None, null=True, related_name='question_selected_to')
     has_selected_answer = models.BooleanField(default=False)
-    answer_count = models.IntegerField(default=0)
+    answer_count = models.IntegerField(default=0)  # TODO: 자동구현
     # image = models.ImageField(upload_to='question_images/')
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -76,10 +73,19 @@ class Question(models.Model):
         verbose_name_plural = _('questions')
         managed = True
 
-'''
+
 class QuestionVote(models.Model):
-    question = models.ForeignKey('Question', on_delete=)
-'''
+    question = models.ForeignKey('Question', on_delete=models.SET_NULL, null=True, related_name='question_vote')
+    user_questioned = models.ForeignKey('User', on_delete=models.SET_NULL, null=True, related_name='voted_from')
+    user_voted = models.ForeignKey('User', on_delete=models.SET_NULL, null=True, related_name='voted_to')
+    is_active = models.BooleanField(default=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = _('question_vote')
+        verbose_name_plural = _('question_votes')
+        managed = True
 
 
 class Answer(models.Model):

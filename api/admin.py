@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('id', 'email', 'username', 'last_login', 'created_at', 'region', 'avatar', 'bio')
+    list_display = ('id', 'email', 'username', 'last_login', 'created_at', 'region', 'avatar')
     list_filter = ('region',
                    ('created_at', DateRangeFilter),
                    ('last_login', DateRangeFilter),

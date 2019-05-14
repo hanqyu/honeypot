@@ -7,6 +7,7 @@ from .serializers import (
     CategorySerializer,
     CreateUserSerializer,
     LoginUserSerializer,
+    QuestionVoteSerializer
 )
 from .models import (
     User,
@@ -14,7 +15,8 @@ from .models import (
     District,
     Question,
     Answer,
-    Category
+    Category,
+    QuestionVote
 )
 from rest_framework import viewsets, permissions, generics, status
 from rest_framework.response import Response
@@ -50,6 +52,11 @@ class AnswerViewSet(viewsets.ModelViewSet):
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+
+
+class QuestionVoteViewSet(viewsets.ModelViewSet):
+    queryset = QuestionVote.objects.all()
+    serializer_class = QuestionVoteSerializer
 
 
 class RegistrationAPI(generics.GenericAPIView):
@@ -123,7 +130,7 @@ class QuestionAPI(generics.GenericAPIView):
             })
 
     def patch(self, request, *args, **kwargs):
-        pk = kwargs["pk"]
+        pk = kwargs.get('pk')
         self.queryset = Question.objects.filter(pk=pk).all()
         instance = self.get_object()
         serializer = self.get_serializer(instance, data=request.data, partial=True)
@@ -136,7 +143,7 @@ class QuestionAPI(generics.GenericAPIView):
             })
 
     def get(self, request, *args, **kwargs):
-        pk = kwargs["pk"]
+        pk = kwargs.get('pk')
         self.queryset = Question.objects.filter(pk=pk).all()
         instance = self.get_object()
         serializer = self.get_serializer(instance)
@@ -169,7 +176,7 @@ class AnswerAPI(generics.GenericAPIView):
         )
 
     def patch(self, request, *args, **kwargs):
-        pk = kwargs["pk"]
+        pk = kwargs.get('pk')
         self.queryset = Answer.objects.filter(pk=pk).all()
         instance = self.get_object()
         serializer = self.get_serializer(instance, data=request.data, partial=True)
@@ -199,9 +206,6 @@ class SelectAnswerAPI(ChangeBoolAPI):
     serializer_class = AnswerSerializer
     question_serializer = QuestionSerializer
 
-    # def get_queryset(self):
-    #     return Answer.objects.filter(pk=self.kwargs['pk']).first()
-
     @staticmethod
     def get_question(pk):
         return Question.objects.get(pk=pk)
@@ -214,7 +218,7 @@ class SelectAnswerAPI(ChangeBoolAPI):
 
     def post(self, request, *args, **kwargs):
         body = {"message": ''}
-        pk = kwargs["pk"]
+        pk = kwargs.get('pk')
         self.queryset = Answer.objects.filter(pk=pk).all()
         answer = self.get_object()
 
@@ -266,4 +270,47 @@ class RecentQuestionAPI(generics.RetrieveAPIView):
                 "result": result
             }
         )
+
+
+class VoteQuestionAPI(generics.GenericAPIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = QuestionVoteSerializer
+
+    def post(self, request, *args, **kwargs):
+        pk = kwargs.get('pk')
+        self.queryset = Question.objects.filter(pk=pk).all()
+        question = self.get_object()
+        request.data['question'] = question.id
+        request.data['user_questioned'] = question.user_id
+        request.data['user_voted'] = request.user.id
+
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        validated_data = serializer.validated_data
+
+        instance, created = QuestionVote.objects.get_or_create(
+            question_id=validated_data['question'].id,
+            user_questioned_id=validated_data['user_questioned'].id,
+            user_voted_id=validated_data['user_voted'].id
+        )
+        if not created:
+            instance.is_active = not instance.is_active
+            instance.save()
+
+        response = {
+            'new_created': created,
+            'result': self.get_serializer(
+                instance, context=self.get_serializer_context()
+            ).data
+        }
+
+        if not created:
+            response['before_changed'] = {
+                'is_active': not instance.is_active
+            }
+            response['after_changed'] = {
+                'is_active': instance.is_active
+            }
+
+        return Response(response)
 

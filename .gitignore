@@ -4,3 +4,4 @@ creamie/secrets.py
 /.media
 db.sqlite3
 api/migrations
+data.xlsx

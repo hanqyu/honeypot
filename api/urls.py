@@ -7,6 +7,7 @@ from .views import (
     QuestionViewSet,
     AnswerViewSet,
     CategoryViewSet,
+    QuestionVoteViewSet,
     RegistrationAPI,
     QuestionAPI,
     LoginAPI,
@@ -14,6 +15,7 @@ from .views import (
     AnswerAPI,
     SelectAnswerAPI,
     RecentQuestionAPI,
+    VoteQuestionAPI
 )
 from django.urls import include
 from rest_framework import routers
@@ -28,6 +30,7 @@ router.register('district', DistrictViewSet)
 router.register('question', QuestionViewSet)
 router.register('answer', AnswerViewSet)
 router.register('category', CategoryViewSet)
+router.register('question_vote', QuestionVoteViewSet)
 
 urlpatterns = [
     url(r'^doc', get_swagger_view(title='Rest API Document')),
@@ -37,6 +40,7 @@ urlpatterns = [
     url(r'^v1/view/', include((router.urls, 'question'), namespace='question')),
     url(r'^v1/view/', include((router.urls, 'answer'), namespace='answer')),
     url(r'^v1/view/', include((router.urls, 'category'), namespace='category')),
+    url(r'^v1/view/', include((router.urls, 'question_vote'), namespace='question_vote')),
 ]
 
 urlpatterns += [
@@ -47,7 +51,8 @@ urlpatterns += [
     url(r'^v1/question/(?P<pk>\d+)/$', QuestionAPI.as_view()),
     url(r'^v1/answer/$', AnswerAPI.as_view()),
     url(r'^v1/answer/(?P<pk>\d+)/select/$', SelectAnswerAPI.as_view()),
-    url(r'^v1/question/recent/$', RecentQuestionAPI.as_view())
+    url(r'^v1/question/recent/$', RecentQuestionAPI.as_view()),
+    url(r'^v1/question/(?P<pk>\d+)/vote/$', VoteQuestionAPI.as_view())
 ]
 
 
