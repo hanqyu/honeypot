@@ -64,6 +64,7 @@ class Question(models.Model):
     selected_answer = models.ForeignKey('Answer', on_delete=models.SET_NULL, default=None, null=True, related_name='question_selected_to')
     has_selected_answer = models.BooleanField(default=False)
     answer_count = models.IntegerField(default=0)  # TODO: 자동구현
+    voting_count = models.IntegerField(default=0)  # TODO: 자동구현
     # image = models.ImageField(upload_to='question_images/')
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)

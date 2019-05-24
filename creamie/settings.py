@@ -158,7 +158,7 @@ SIMPLE_JWT = {
 }
 
 if DEBUG:
-    SIMPLE_JWT['ACCESS_TOKEN_LIFETIME'] = timedelta(days=1)
+    SIMPLE_JWT['ACCESS_TOKEN_LIFETIME'] = timedelta(days=30)
 
 # Auth User Model (Customized)
 AUTH_USER_MODEL = 'api.User'

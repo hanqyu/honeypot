@@ -116,7 +116,8 @@ class UserAPI(generics.RetrieveAPIView):
 class QuestionAPI(generics.GenericAPIView):
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = QuestionSerializer
-    answer_serializer = AnswerSerializer
+    queryset = Question.objects.all()
+    lookup_fields = ('pk', )
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -141,6 +142,27 @@ class QuestionAPI(generics.GenericAPIView):
             data={
                 "result": QuestionSerializer(response, context=self.get_serializer_context()).data
             })
+
+    def get(self, request, *args, **kwargs):
+        pk = self.kwargs['pk']
+        if pk:
+            self.queryset = Question.objects.filter(pk=pk).all()
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        result = serializer.data
+
+        return Response(
+            status=200,
+            data={
+                "count": len(result),
+                "result": result
+            })
+
+
+class QuestionAnswerAPI(generics.GenericAPIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = QuestionSerializer
+    answer_serializer = AnswerSerializer
 
     def get(self, request, *args, **kwargs):
         pk = kwargs.get('pk')

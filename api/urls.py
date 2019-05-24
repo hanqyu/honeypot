@@ -15,7 +15,8 @@ from .views import (
     AnswerAPI,
     SelectAnswerAPI,
     RecentQuestionAPI,
-    VoteQuestionAPI
+    VoteQuestionAPI,
+    QuestionAnswerAPI
 )
 from django.urls import include
 from rest_framework import routers
@@ -47,8 +48,8 @@ urlpatterns += [
     url(r'^v1/auth/register/$', RegistrationAPI.as_view()),
     url(r'^v1/auth/login/$', LoginAPI.as_view()),
     url(r'^v1/auth/user/$', UserAPI.as_view()),
-    url(r'^v1/question/$', QuestionAPI.as_view()),
     url(r'^v1/question/(?P<pk>\d+)/$', QuestionAPI.as_view()),
+    url(r'^v1/question/(?P<pk>\d+)/answer/$', QuestionAnswerAPI.as_view()),
     url(r'^v1/answer/$', AnswerAPI.as_view()),
     url(r'^v1/answer/(?P<pk>\d+)/select/$', SelectAnswerAPI.as_view()),
     url(r'^v1/question/recent/$', RecentQuestionAPI.as_view()),
