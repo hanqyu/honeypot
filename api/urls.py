@@ -48,6 +48,7 @@ urlpatterns += [
     url(r'^v1/auth/register/$', RegistrationAPI.as_view()),
     url(r'^v1/auth/login/$', LoginAPI.as_view()),
     url(r'^v1/auth/user/$', UserAPI.as_view()),
+    url(r'^v1/question/$', QuestionAPI.as_view()),
     url(r'^v1/question/(?P<pk>\d+)/$', QuestionAPI.as_view()),
     url(r'^v1/question/(?P<pk>\d+)/answer/$', QuestionAnswerAPI.as_view()),
     url(r'^v1/answer/$', AnswerAPI.as_view()),

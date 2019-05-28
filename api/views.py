@@ -117,9 +117,9 @@ class QuestionAPI(generics.GenericAPIView):
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = QuestionSerializer
     queryset = Question.objects.all()
-    lookup_fields = ('pk', )
 
     def post(self, request, *args, **kwargs):
+        request.data['user'] = request.user.id
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         instance = serializer.save()
@@ -132,6 +132,7 @@ class QuestionAPI(generics.GenericAPIView):
 
     def patch(self, request, *args, **kwargs):
         pk = kwargs.get('pk')
+        request.data['user'] = request.user.id
         self.queryset = Question.objects.filter(pk=pk).all()
         instance = self.get_object()
         serializer = self.get_serializer(instance, data=request.data, partial=True)

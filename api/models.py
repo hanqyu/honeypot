@@ -109,7 +109,7 @@ class Category(models.Model):
     name = models.CharField(max_length=30)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
-
+    QuestionSerializer
     class Meta:
         verbose_name = _('category')
         verbose_name_plural = _('categories')
