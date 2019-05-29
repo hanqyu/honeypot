@@ -56,7 +56,7 @@ class Question(models.Model):
     :param region: option.
     '''
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='question')
-    region = models.ForeignKey('Region', on_delete=models.SET_NULL, null=True, related_name='question')
+    region = models.ForeignKey('Region', on_delete=models.SET_NULL, null=True, blank=True, related_name='question')
     anonymous = models.BooleanField(default=True)
     text = models.CharField(max_length=1000)
     used_voting = models.IntegerField(default=0, validators=(MinValueValidator(0),))
@@ -109,7 +109,7 @@ class Category(models.Model):
     name = models.CharField(max_length=30)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    QuestionSerializer
+
     class Meta:
         verbose_name = _('category')
         verbose_name_plural = _('categories')

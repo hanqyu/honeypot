@@ -160,7 +160,7 @@ class QuestionAPI(generics.GenericAPIView):
             })
 
 
-class QuestionAnswerAPI(generics.GenericAPIView):
+class AnswerInQuestionAPI(generics.GenericAPIView):
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = QuestionSerializer
     answer_serializer = AnswerSerializer
@@ -171,13 +171,20 @@ class QuestionAnswerAPI(generics.GenericAPIView):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
         answers = Answer.objects.filter(pk__in=serializer.data['answer']).all()
+        question = {
+            "id": instance.id,
+            "text": instance.text,
+            "created_at": instance.created_at,
+            "has_selected_answer": instance.has_selected_answer,
+            "selected_answer": instance.selected_answer.id,
+        }
         result = AnswerSerializer(answers, context=self.get_serializer_context(), many=True).data
 
         return Response(
             status=200,
             data={
-                "question_id": instance.id,
-                "questioned_user": instance.user_id,
+                "question": question,
+                "result_count": len(result),
                 "result": result
             })
 

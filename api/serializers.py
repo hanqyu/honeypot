@@ -78,7 +78,7 @@ class QuestionSerializer(serializers.ModelSerializer):
     user_is_active = serializers.ReadOnlyField(source='user.is_active')
     region_name = serializers.CharField(source='region.name', read_only=True)
     category_name = serializers.CharField(source='category.name', read_only=True)
-    selected_answer_text = serializers.CharField(source='selected_answer.name', read_only=True)
+    selected_answer_text = serializers.CharField(source='selected_answer.text', read_only=True)
 
     class Meta:
         model = Question
