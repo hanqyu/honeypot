@@ -61,7 +61,7 @@ class Question(models.Model):
     text = models.CharField(max_length=1000)
     used_voting = models.IntegerField(default=0, validators=(MinValueValidator(0),))
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, related_name='question')
-    selected_answer = models.ForeignKey('Answer', on_delete=models.SET_NULL, default=None, null=True, related_name='question_selected_to')
+    selected_answer = models.OneToOneField('Answer', on_delete=models.SET_NULL, default=None, null=True, related_name='question_selected_to')
     has_selected_answer = models.BooleanField(default=False)
     answer_count = models.IntegerField(default=0)  # TODO: 자동구현
     voting_count = models.IntegerField(default=0)  # TODO: 자동구현

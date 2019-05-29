@@ -176,8 +176,9 @@ class AnswerInQuestionAPI(generics.GenericAPIView):
             "text": instance.text,
             "created_at": instance.created_at,
             "has_selected_answer": instance.has_selected_answer,
-            "selected_answer": instance.selected_answer.id,
         }
+        if instance.has_selected_answer:
+            question['selected_answer'] = instance.selected_answer.id
         result = AnswerSerializer(answers, context=self.get_serializer_context(), many=True).data
 
         return Response(
