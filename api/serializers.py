@@ -1,5 +1,5 @@
 from .models import User, Region, District, Question, Answer, Category, QuestionVote
-from rest_framework import serializers
+from rest_framework import serializers, status
 from django.conf import settings
 from rest_framework import permissions
 from django.contrib.auth import authenticate
@@ -51,9 +51,23 @@ class LoginUserSerializer(serializers.Serializer):
 
     def validate(self, data):
         user = authenticate(**data)
-        if user and user.is_active:
-            return user
-        raise serializers.ValidationError("Unable to log in with provided credentials.")
+        if user is None:
+            validation_error = serializers.ValidationError
+            validation_error.status_code = status.HTTP_404_NOT_FOUND
+            raise serializers.ValidationError(
+                code='Not Found',
+                detail={"error": "이메일 또는 비밀번호가 올바르지 않습니다."}
+            )
+
+        if user.is_active is False:
+            validation_error = serializers.ValidationError
+            validation_error.status_code = status.HTTP_404_NOT_FOUND
+            raise serializers.ValidationError(
+                code='Unavailable',
+                detail={"error": "이용할 수 없는 회원입니다. 고객센터에 연락해주세요."}
+            )
+
+        return user
 
 
 class RegionSerializer(serializers.ModelSerializer):

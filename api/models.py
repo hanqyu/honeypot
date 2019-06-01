@@ -91,7 +91,7 @@ class QuestionVote(models.Model):
 
 class Answer(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='answer')
-    question = models.ForeignKey('Question', on_delete=models.CASCADE, null=True, related_name='answer')
+    question = models.ForeignKey('Question', on_delete=models.CASCADE, null=False, related_name='answer')
     anonymous = models.BooleanField(default=True)
     text = models.CharField(max_length=3000)
     is_selected = models.BooleanField(default=False)

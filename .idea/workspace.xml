@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ec372852-b881-4b96-b2aa-bdb2838819fc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,17 +42,17 @@
     <favorites_list name="creamie" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.43772894">
+    <splitter split-orientation="horizontal" split-proportion="0.53253555">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/api/views.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="105">
-                  <caret line="272" column="41" selection-start-line="272" selection-start-column="23" selection-end-line="272" selection-end-column="41" />
+                <state relative-caret-position="357">
+                  <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
                   <folding>
-                    <marker date="1558707491996" expanded="true" signature="7274:7275" ph="..." />
-                    <marker date="1558707491996" expanded="false" signature="7274:7623" ph="..." />
+                    <marker date="1559321881390" expanded="true" signature="7633:7634" ph="..." />
+                    <marker date="1559321881390" expanded="false" signature="7633:7982" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -63,8 +61,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/creamie/settings.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2340">
-                  <caret line="160" column="59" selection-start-line="160" selection-start-column="59" selection-end-line="160" selection-end-column="59" />
+                <state relative-caret-position="1770">
+                  <caret line="122" column="6" selection-start-line="122" selection-start-column="6" selection-end-line="122" selection-end-column="6" />
                   <folding>
                     <element signature="e#306#315#0" expanded="true" />
                   </folding>
@@ -96,8 +94,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/api/serializers.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1725">
-                  <caret line="122" column="9" selection-start-line="122" selection-start-column="9" selection-end-line="122" selection-end-column="9" />
+                <state relative-caret-position="1950">
+                  <caret line="136" column="9" selection-start-line="136" selection-start-column="9" selection-end-line="136" selection-end-column="9" />
                 </state>
               </provider>
             </entry>
@@ -109,8 +107,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/api/models.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="224">
-                  <caret line="112" column="15" lean-forward="true" selection-start-line="112" selection-start-column="15" selection-end-line="112" selection-end-column="15" />
+                <state relative-caret-position="105">
+                  <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
@@ -141,8 +139,20 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/api/serializers.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="299">
-                  <caret line="80" column="72" selection-start-line="80" selection-start-column="72" selection-end-line="80" selection-end-column="72" />
+                <state relative-caret-position="406">
+                  <caret line="70" selection-start-line="70" selection-end-line="70" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$USER_HOME$/.virtualenvs/creamie/lib/python3.7/site-packages/rest_framework/exceptions.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1095">
+                  <caret line="85" column="33" selection-start-line="85" selection-start-column="33" selection-end-line="85" selection-end-column="33" />
+                  <folding>
+                    <element signature="e#190#229#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -150,8 +160,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/api/urls.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="405">
-                  <caret line="50" column="23" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
+                <state relative-caret-position="480">
+                  <caret line="55" column="35" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
                   <folding>
                     <element signature="e#0#32#0" expanded="true" />
                   </folding>
@@ -173,9 +183,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>traceback</find>
-      <find>create(</find>
-      <find>many_to</find>
       <find>get)q</find>
       <find>get_qu</find>
       <find>creamie</find>
@@ -203,6 +210,9 @@
       <find>vote</find>
       <find>quer</find>
       <find>QuestionSerializer</find>
+      <find>auth</find>
+      <find>is_vali</find>
+      <find>non_field</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -253,17 +263,17 @@
         <option value="$PROJECT_DIR$/api/tests.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/creamie/settings.py" />
-        <option value="$PROJECT_DIR$/api/urls.py" />
-        <option value="$PROJECT_DIR$/api/views.py" />
         <option value="$PROJECT_DIR$/api/admin.py" />
+        <option value="$PROJECT_DIR$/api/urls.py" />
         <option value="$PROJECT_DIR$/api/models.py" />
+        <option value="$PROJECT_DIR$/api/views.py" />
         <option value="$PROJECT_DIR$/api/serializers.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1366" />
+    <option name="width" value="1680" />
     <option name="height" value="975" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -459,7 +469,14 @@
       <workItem from="1558438300317" duration="341000" />
       <workItem from="1558695433998" duration="5268000" />
       <workItem from="1558722065809" duration="1665000" />
-      <workItem from="1559023039716" duration="814000" />
+      <workItem from="1559023039716" duration="2844000" />
+      <workItem from="1559116801686" duration="5910000" />
+      <workItem from="1559232821024" duration="323000" />
+      <workItem from="1559307859987" duration="5958000" />
+      <workItem from="1559381036325" duration="313000" />
+      <workItem from="1559381848167" duration="163000" />
+      <workItem from="1559382328957" duration="226000" />
+      <workItem from="1559389063566" duration="2504000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1556641792050</created>
@@ -643,11 +660,39 @@
       <option name="project" value="LOCAL" />
       <updated>1558702004335</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="minor fix">
+      <created>1559024843112</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1559024843112</updated>
+    </task>
+    <task id="LOCAL-00028" summary="[수정] AnswerInQuestionAPI">
+      <created>1559146089564</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1559146089564</updated>
+    </task>
+    <task id="LOCAL-00029" summary="[수정] question 모델의 selected answer를 onetoone으로 변경. selected_Answer 받아올때 object없는 경우 fix">
+      <created>1559146564133</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1559146564133</updated>
+    </task>
+    <task id="LOCAL-00030" summary="[수정] Answer.question ON DEL CASCADE">
+      <created>1559147181278</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1559147181278</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163050000" />
+    <option name="totallyTimeSpent" value="180477000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -659,10 +704,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="975" extended-state="6" />
+    <frame x="0" y="23" width="1680" height="975" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49830508" visible="true" weight="0.17826618" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49830508" visible="true" weight="0.1910867" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5016949" side_tool="true" weight="0.17704518" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -762,11 +807,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fix gitignore" />
-    <MESSAGE value="create create_user, login_user serializer" />
-    <MESSAGE value="split api view from api.py" />
     <MESSAGE value="change name (api.py -&gt; serializers.py)" />
-    <MESSAGE value="minor fix" />
     <MESSAGE value="delete all the viewset in serializers.py" />
     <MESSAGE value="gitignore" />
     <MESSAGE value="remove /.static from .gitignore" />
@@ -787,12 +828,13 @@
     <MESSAGE value="[추가] VoteQuestion 구현" />
     <MESSAGE value="[추가] VoteQuestionAPI 구현" />
     <MESSAGE value="[수정] QuestionAPI get 별도 구현 &#10;[추가] 기존 QuestionAPI GET -&gt; QuestionAnswerAPI" />
-    <option name="LAST_COMMIT_MESSAGE" value="[수정] QuestionAPI get 별도 구현 &#10;[추가] 기존 QuestionAPI GET -&gt; QuestionAnswerAPI" />
+    <MESSAGE value="minor fix" />
+    <MESSAGE value="[수정] AnswerInQuestionAPI" />
+    <MESSAGE value="[수정] question 모델의 selected answer를 onetoone으로 변경. selected_Answer 받아올때 object없는 경우 fix" />
+    <MESSAGE value="[수정] Answer.question ON DEL CASCADE" />
+    <option name="LAST_COMMIT_MESSAGE" value="[수정] Answer.question ON DEL CASCADE" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/creamie/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$USER_HOME$/.virtualenvs/creamie/lib/python3.7/site-packages/rest_framework/viewsets.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="530">
@@ -888,13 +930,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
           <caret line="61" column="4" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/creamie/lib/python3.7/site-packages/rest_framework/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="409" lean-forward="true" selection-start-line="409" selection-end-line="409" />
         </state>
       </provider>
     </entry>
@@ -1033,10 +1068,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/creamie/lib/python3.7/site-packages/rest_framework/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="755" column="33" selection-start-line="755" selection-start-column="18" selection-end-line="755" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/creamie/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2340">
-          <caret line="160" column="59" selection-start-line="160" selection-start-column="59" selection-end-line="160" selection-end-column="59" />
+        <state relative-caret-position="1770">
+          <caret line="122" column="6" selection-start-line="122" selection-start-column="6" selection-end-line="122" selection-end-column="6" />
           <folding>
             <element signature="e#306#315#0" expanded="true" />
           </folding>
@@ -1060,6 +1102,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/api/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1076,41 +1128,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/creamie/lib/python3.7/site-packages/rest_framework/exceptions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1095">
+          <caret line="85" column="33" selection-start-line="85" selection-start-column="33" selection-end-line="85" selection-end-column="33" />
+          <folding>
+            <element signature="e#190#229#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="50" column="23" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
+        <state relative-caret-position="480">
+          <caret line="55" column="35" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="272" column="41" selection-start-line="272" selection-start-column="23" selection-end-line="272" selection-end-column="41" />
-          <folding>
-            <marker date="1558707491996" expanded="true" signature="7274:7275" ph="..." />
-            <marker date="1558707491996" expanded="false" signature="7274:7623" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="112" column="15" lean-forward="true" selection-start-line="112" selection-start-column="15" selection-end-line="112" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="80" column="72" selection-start-line="80" selection-start-column="72" selection-end-line="80" selection-end-column="72" />
+        <state relative-caret-position="1950">
+          <caret line="136" column="9" selection-start-line="136" selection-start-column="9" selection-end-line="136" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
+          <folding>
+            <marker date="1559321881390" expanded="true" signature="7633:7634" ph="..." />
+            <marker date="1559321881390" expanded="false" signature="7633:7982" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

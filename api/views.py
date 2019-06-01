@@ -20,6 +20,7 @@ from .models import (
 )
 from rest_framework import viewsets, permissions, generics, status
 from rest_framework.response import Response
+from rest_framework.exceptions import APIException
 from .tokens import TokenSerializer
 from django.forms.models import model_to_dict
 
@@ -266,6 +267,7 @@ class SelectAnswerAPI(ChangeBoolAPI):
 
         response = self.change_bool(request, field='is_selected')
         question.has_selected_answer = True
+        question.selected_answer = answer
         question.save()
         return Response(
             status=204,
