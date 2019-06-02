@@ -21,7 +21,7 @@ from .views import (
 from django.urls import include
 from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
 
 
 router = routers.DefaultRouter()
@@ -50,6 +50,7 @@ urlpatterns += [
     url(r'^v1/auth/user/$', UserAPI.as_view()),
     url(r'^v1/auth/token/$', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     url(r'^v1/auth/token/refresh/$', TokenRefreshView.as_view(), name='token_refresh'),
+    url(r'^v1/auth/token/verify/$', TokenVerifyView.as_view(), name='token_verify'),
 ]
 
 urlpatterns += [
