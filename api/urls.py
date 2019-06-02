@@ -48,6 +48,11 @@ urlpatterns += [
     url(r'^v1/auth/register/$', RegistrationAPI.as_view()),
     url(r'^v1/auth/login/$', LoginAPI.as_view()),
     url(r'^v1/auth/user/$', UserAPI.as_view()),
+    url(r'^v1/auth/token/$', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    url(r'^v1/auth/token/refresh/$', TokenRefreshView.as_view(), name='token_refresh'),
+]
+
+urlpatterns += [
     url(r'^v1/question/$', QuestionAPI.as_view()),
     url(r'^v1/question/(?P<pk>\d+)/$', QuestionAPI.as_view()),
     url(r'^v1/question/(?P<pk>\d+)/answer/$', AnswerInQuestionAPI.as_view()),
@@ -57,8 +62,3 @@ urlpatterns += [
     url(r'^v1/question/(?P<pk>\d+)/vote/$', VoteQuestionAPI.as_view())
 ]
 
-
-urlpatterns += [
-    url(r'^token/$', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    url(r'^token/refresh/$', TokenRefreshView.as_view(), name='token_refresh'),
-]
