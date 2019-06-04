@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec372852-b881-4b96-b2aa-bdb2838819fc" name="Default Changelist" comment="changed project &amp; directory name">
-      <change afterPath="$PROJECT_DIR$/../honeypot/.config/honeypot.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../honeypot/.media/avatars/default.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../honeypot/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../honeypot/honeypot/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../honeypot/honeypot/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../honeypot/honeypot/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../honeypot/honeypot/wsgi.py" afterDir="false" />
+    <list default="true" id="ec372852-b881-4b96-b2aa-bdb2838819fc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../honeypot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../honeypot/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../honeypot/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../honeypot/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -389,7 +383,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -638,7 +632,7 @@
       <workItem from="1559382328957" duration="226000" />
       <workItem from="1559389063566" duration="8445000" />
       <workItem from="1559485092034" duration="427000" />
-      <workItem from="1559651363700" duration="2547000" />
+      <workItem from="1559651363700" duration="2699000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1556641792050</created>
@@ -878,11 +872,25 @@
       <option name="project" value="LOCAL" />
       <updated>1559653152797</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="커밋안된 파일 추가">
+      <created>1559653925405</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1559653925405</updated>
+    </task>
+    <task id="LOCAL-00036" summary="[추가] README.md">
+      <created>1559653937703</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1559653937703</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="189392000" />
+    <option name="totallyTimeSpent" value="189544000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -895,7 +903,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="974" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49830508" visible="true" weight="0.12698413" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1001,8 +1008,6 @@
       <path value="$PROJECT_DIR$" />
       <path value="~/PycharmProjects/honeypot" />
     </ignored-roots>
-    <MESSAGE value="remove /.static from .gitignore" />
-    <MESSAGE value="add import CreateUserSerializer" />
     <MESSAGE value="회원가입, 로그인 구현 RegistrationAPI, LoginAPI" />
     <MESSAGE value="어드민 추가" />
     <MESSAGE value="User.is_staff 추가" />
@@ -1026,7 +1031,9 @@
     <MESSAGE value="[수정] login serializer error 처리" />
     <MESSAGE value="[수정] token refresh url" />
     <MESSAGE value="changed project &amp; directory name" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed project &amp; directory name" />
+    <MESSAGE value="커밋안된 파일 추가" />
+    <MESSAGE value="[추가] README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="[추가] README.md" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../honeypot/api/managers/UserManager.py">
@@ -1326,16 +1333,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../honeypot/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="210">
-            <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../honeypot/api/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -1367,6 +1364,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../honeypot/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="210">
+            <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
