@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec372852-b881-4b96-b2aa-bdb2838819fc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../honeypot/.idea/honeypot.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../honeypot/.config/creamie.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../honeypot/.config/uwsgi.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../honeypot/.config/uwsgi.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../honeypot/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../honeypot/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../honeypot/.idea/creamie.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../honeypot/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../honeypot/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="ec372852-b881-4b96-b2aa-bdb2838819fc" name="Default Changelist" comment="changed project &amp; directory name">
+      <change afterPath="$PROJECT_DIR$/../honeypot/.config/honeypot.conf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../honeypot/.media/avatars/default.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../honeypot/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../honeypot/honeypot/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../honeypot/honeypot/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../honeypot/honeypot/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../honeypot/honeypot/wsgi.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../honeypot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../honeypot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../honeypot/creamie/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../honeypot/creamie/settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../honeypot/creamie/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../honeypot/creamie/wsgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../honeypot/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/../honeypot/manage.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,41 +49,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.53253555">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../honeypot/api/views.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="750">
-                  <caret line="280" column="41" selection-start-line="280" selection-start-column="41" selection-end-line="280" selection-end-column="41" />
-                  <folding>
-                    <element signature="e#653#720#0" />
-                    <element signature="e#771#842#0" />
-                    <element signature="e#895#970#0" />
-                    <element signature="e#1023#1098#0" />
-                    <element signature="e#1149#1220#0" />
-                    <element signature="e#1273#1348#0" />
-                    <element signature="e#1405#1488#0" />
-                    <element signature="e#1543#2514#0" />
-                    <element signature="e#2562#3044#0" />
-                    <element signature="e#3092#3242#0" />
-                    <element signature="e#3293#4865#0" />
-                    <element signature="e#4924#5981#0" />
-                    <element signature="e#6030#7038#0" />
-                    <element signature="e#7091#7451#0" />
-                    <element signature="e#7496#9044#0" />
-                    <element signature="e#9168#9995#0" />
-                    <element signature="e#10050#11475#0" />
-                    <marker date="1559321881390" expanded="true" signature="7633:7634" ph="..." />
-                    <marker date="1559321881390" expanded="false" signature="7633:7982" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/../honeypot/honeypot/settings.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="520">
-                  <caret line="40" column="18" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+                <state relative-caret-position="329">
+                  <caret line="132" column="34" selection-start-line="132" selection-start-column="34" selection-end-line="132" selection-end-column="34" />
                   <folding>
                     <element signature="e#306#315#0" expanded="true" />
                   </folding>
@@ -96,28 +62,22 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../honeypot/honeypot/secrets.py">
+            <entry file="file://$PROJECT_DIR$/../honeypot/.gitignore">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="18" selection-start-line="18" selection-end-line="18" />
+                <state relative-caret-position="75">
+                  <caret line="5" column="6" lean-forward="true" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../honeypot/honeypot/urls.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="3" selection-start-column="3" selection-end-column="3" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/../honeypot/.gitignore">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="75">
-                  <caret line="5" column="6" lean-forward="true" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+            <entry file="file://$PROJECT_DIR$/../honeypot/README.md">
+              <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+                <state split_layout="SPLIT">
+                  <first_editor relative-caret-position="210">
+                    <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+                  </first_editor>
+                  <second_editor />
                 </state>
               </provider>
             </entry>
@@ -174,7 +134,7 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/../honeypot/api/models.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="390">
@@ -227,11 +187,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/../honeypot/api/urls.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="405">
-                  <caret line="50" column="44" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
+                <state relative-caret-position="435">
+                  <caret line="52" column="28" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
                   <folding>
                     <element signature="e#0#32#0" expanded="true" />
                   </folding>
@@ -262,7 +222,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>get)q</find>
       <find>get_qu</find>
       <find>creamie</find>
       <find>text</find>
@@ -292,6 +251,7 @@
       <find>auth</find>
       <find>is_vali</find>
       <find>non_field</find>
+      <find>jwt</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -355,6 +315,7 @@
         <option value="$PROJECT_DIR$/../honeypot/.config/honeypot.conf" />
         <option value="$PROJECT_DIR$/../honeypot/honeypot/settings.py" />
         <option value="$PROJECT_DIR$/../honeypot/.gitignore" />
+        <option value="$PROJECT_DIR$/../honeypot/README.md" />
       </list>
     </option>
   </component>
@@ -380,6 +341,11 @@
             <path>
               <item name="honeypot" type="b2602c69:ProjectViewProjectNode" />
               <item name="honeypot" type="462c0819:PsiDirectoryNode" />
+              <item name=".config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="honeypot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="honeypot" type="462c0819:PsiDirectoryNode" />
               <item name=".media" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -387,6 +353,11 @@
               <item name="honeypot" type="462c0819:PsiDirectoryNode" />
               <item name=".media" type="462c0819:PsiDirectoryNode" />
               <item name="avatars" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="honeypot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="honeypot" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="honeypot" type="b2602c69:ProjectViewProjectNode" />
@@ -667,7 +638,7 @@
       <workItem from="1559382328957" duration="226000" />
       <workItem from="1559389063566" duration="8445000" />
       <workItem from="1559485092034" duration="427000" />
-      <workItem from="1559651363700" duration="1549000" />
+      <workItem from="1559651363700" duration="2547000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1556641792050</created>
@@ -900,11 +871,18 @@
       <option name="project" value="LOCAL" />
       <updated>1559463197338</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="changed project &amp; directory name">
+      <created>1559653152796</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1559653152797</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="188394000" />
+    <option name="totallyTimeSpent" value="189392000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -917,8 +895,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="974" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49830508" visible="true" weight="0.12698413" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49830508" visible="true" weight="0.12698413" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5016949" side_tool="true" weight="0.17704518" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -932,7 +911,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.498779" weight="0.3276644" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32992035" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50183153" side_tool="true" visible="true" weight="0.19727892" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.4981685" visible="true" weight="0.19727892" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4981685" visible="true" weight="0.19727892" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.498779" weight="0.29920363" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -1022,7 +1001,6 @@
       <path value="$PROJECT_DIR$" />
       <path value="~/PycharmProjects/honeypot" />
     </ignored-roots>
-    <MESSAGE value="gitignore" />
     <MESSAGE value="remove /.static from .gitignore" />
     <MESSAGE value="add import CreateUserSerializer" />
     <MESSAGE value="회원가입, 로그인 구현 RegistrationAPI, LoginAPI" />
@@ -1047,16 +1025,10 @@
     <MESSAGE value="[수정] Answer.question ON DEL CASCADE" />
     <MESSAGE value="[수정] login serializer error 처리" />
     <MESSAGE value="[수정] token refresh url" />
-    <option name="LAST_COMMIT_MESSAGE" value="[수정] token refresh url" />
+    <MESSAGE value="changed project &amp; directory name" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed project &amp; directory name" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.virtualenvs/creamie/lib/python3.7/site-packages/django/http/multipartparser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1869">
-          <caret line="94" column="13" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../honeypot/api/managers/UserManager.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -1305,30 +1277,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../honeypot/api/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="50" column="44" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.virtualenvs/creamie/lib/python3.7/site-packages/rest_framework_simplejwt/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1080">
           <caret line="77" column="21" selection-start-line="77" selection-start-column="6" selection-end-line="77" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../honeypot/api/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1367,34 +1319,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../honeypot/honeypot/secrets.py">
+    <entry file="file://$PROJECT_DIR$/../honeypot/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="75">
+          <caret line="5" column="6" lean-forward="true" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../honeypot/honeypot/settings.py">
+    <entry file="file://$PROJECT_DIR$/../honeypot/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="210">
+            <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../honeypot/api/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="40" column="18" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+        <state relative-caret-position="390">
+          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
           <folding>
-            <element signature="e#306#315#0" expanded="true" />
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../honeypot/api/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="52" column="28" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../honeypot/honeypot/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="3" selection-start-column="3" selection-end-column="3" />
+        <state relative-caret-position="240">
+          <caret line="21" column="22" lean-forward="true" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../honeypot/.gitignore">
+    <entry file="file://$PROJECT_DIR$/../honeypot/honeypot/secrets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="6" lean-forward="true" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        <state relative-caret-position="270">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../honeypot/honeypot/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="132" column="34" selection-start-line="132" selection-start-column="34" selection-end-line="132" selection-end-column="34" />
+          <folding>
+            <element signature="e#306#315#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
