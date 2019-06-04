@@ -10,15 +10,17 @@
 * PostgresSQL
 
 
-##### API 서버
+### API 서버
 * ./api/serializers.py<br>
 : api Serializer
+
 * ./api/models.py<br>
 : api Models
+
 * ./api/views.py<br> 
 : api View
 
-##### 토큰
+### 토큰
 * [django-rest-framework-simplejwt](https://github.com/davesque/django-rest-framework-simplejwt)
 
 ##### 
