@@ -3,7 +3,7 @@ Description=EC2 Deploy uWSGI service
 After=syslog.target
 
 [Service]
-ExecStart=/home/ubuntu/.pyenv/versions/uwsgi-env/bin/uwsgi -i /home/ubuntu/honeypot/.config/uwsgi.ini
+ExecStart=/home/ubuntu/.pyenv/versions/uwsgi-env/bin/uwsgi -i /home/ubuntu/srv/honeypot/.config/uwsgi.ini
 
 Restart=always
 KillSignal=SIGQUIT
