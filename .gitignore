@@ -1,5 +1,4 @@
 honeypot/secrets.py
-/media
 /static
 db.sqlite3
 api/migrations
