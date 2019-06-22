@@ -27,11 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'localhost', 'api-test.hanqyu.com',
-                 'ec2-13-209-111-182.ap-northeast-2.compute.amazonaws.com', '13.209.111.182', ]
-
-if DEBUG:
-    ALLOWED_HOSTS += 'testserver'
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'localhost', '.amazonaws.com', 'honeypot.hanqyu.com']
 
 secrets.main()
 SECRET_KEY = os.environ.get('SECRET_KEY')
