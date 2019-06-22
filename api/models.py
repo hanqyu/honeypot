@@ -56,11 +56,11 @@ class Question(models.Model):
     :param region: option.
     '''
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='question')
-    region = models.ForeignKey('Region', on_delete=models.SET_NULL, null=True, blank=True, related_name='question')
+    region = models.ForeignKey('Region', on_delete=models.SET_NULL, null=True, default=None, blank=True, related_name='question')
     anonymous = models.BooleanField(default=True)
     text = models.CharField(max_length=1000)
     used_voting = models.IntegerField(default=0, validators=(MinValueValidator(0),))
-    category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, related_name='question')
+    category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, default=None, related_name='question')
     selected_answer = models.OneToOneField('Answer', on_delete=models.SET_NULL, default=None, null=True, related_name='question_selected_to')
     has_selected_answer = models.BooleanField(default=False)
     answer_count = models.IntegerField(default=0)  # TODO: 자동구현
@@ -76,9 +76,9 @@ class Question(models.Model):
 
 
 class QuestionVote(models.Model):
-    question = models.ForeignKey('Question', on_delete=models.SET_NULL, null=True, related_name='question_vote')
-    user_questioned = models.ForeignKey('User', on_delete=models.SET_NULL, null=True, related_name='voted_from')
-    user_voted = models.ForeignKey('User', on_delete=models.SET_NULL, null=True, related_name='voted_to')
+    question = models.ForeignKey('Question', on_delete=models.SET_NULL, null=True, default=None, related_name='question_vote')
+    user_questioned = models.ForeignKey('User', on_delete=models.SET_NULL, null=True, default=None, related_name='voted_from')
+    user_voted = models.ForeignKey('User', on_delete=models.SET_NULL, null=True, default=None, related_name='voted_to')
     is_active = models.BooleanField(default=True)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -91,7 +91,7 @@ class QuestionVote(models.Model):
 
 class Answer(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='answer')
-    question = models.ForeignKey('Question', on_delete=models.CASCADE, null=False, related_name='answer')
+    question = models.ForeignKey('Question', on_delete=models.CASCADE, null=False, default=None, related_name='answer')
     anonymous = models.BooleanField(default=True)
     text = models.CharField(max_length=3000)
     is_selected = models.BooleanField(default=False)
@@ -141,7 +141,7 @@ class District(models.Model):
 
 class Region(models.Model):
     name = models.CharField(max_length=20)
-    district = models.ForeignKey('District', on_delete=models.PROTECT, null=True, related_name='region')
+    district = models.ForeignKey('District', on_delete=models.PROTECT, null=True, default=None, related_name='region')
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
