@@ -3,3 +3,4 @@ honeypot/secrets.py
 db.sqlite3
 api/migrations
 *.xlsx
+/.idea/workspace.xml
