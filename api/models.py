@@ -15,6 +15,14 @@ from .managers import UserManager
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+    MALE = 'M'
+    FEMALE = 'F'
+    GENDER_CHOICES = [
+        (MALE, 'Male'),
+        (FEMALE, 'Female'),
+        ('unknown', 'Unknown')
+    ]
+
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=30, blank=True)
     avatar = models.ImageField(upload_to='avatars/', blank=True, default='avatars/default.jpg')
@@ -22,6 +30,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     region = models.ForeignKey('Region', on_delete=models.SET_NULL, null=True)
+    gender = models.CharField(max_length=7, choices=GENDER_CHOICES, default='unknown', null=True, blank=True)
+    birth_date = models.DateField(null=True)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -30,14 +40,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
-    # def __init__(self):
-    #     self._avatar_url = self.get_avatar_url()
 
     class Meta:
         verbose_name = _('user')
         verbose_name_plural = _('users')
         managed = True
-    #
+
     # def get_avatar_url(self):
     #     try:
     #         return self.avatar.url

@@ -20,7 +20,7 @@ from .models import (
 )
 from rest_framework import viewsets, permissions, generics, status
 from rest_framework.response import Response
-from rest_framework.exceptions import APIException
+from rest_framework.exceptions import PermissionDenied
 from .tokens import TokenSerializer
 from django.forms.models import model_to_dict
 
@@ -110,8 +110,29 @@ class UserAPI(generics.RetrieveAPIView):
     permission_classes = (permissions.IsAuthenticated, )
     serializer_class = UserSerializer
 
+    @staticmethod
+    def __error_invalid_request_user(requested_user_id, authorized_user_id):
+        if int(requested_user_id) != int(authorized_user_id):
+            message = "invalid user to request"
+            raise PermissionDenied(message)
+
     def get_object(self):
         return self.request.user
+
+    def patch(self, request, *args, **kwargs):
+        self.__error_invalid_request_user(request.user.id, authorized_user_id=kwargs.get('pk'))
+
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        response = serializer.save()
+        return Response(
+            status=204,
+            data={
+                "message": "유저 정보가 업데이트 되었습니다.",
+                "result": UserSerializer(response, context=self.get_serializer_context()).data
+            }
+        )
 
 
 class QuestionAPI(generics.GenericAPIView):
@@ -142,6 +163,7 @@ class QuestionAPI(generics.GenericAPIView):
         return Response(
             status=204,
             data={
+                "message": "질문이 수정되었습니다",
                 "result": QuestionSerializer(response, context=self.get_serializer_context()).data
             })
 
@@ -243,10 +265,10 @@ class SelectAnswerAPI(ChangeBoolAPI):
         return Question.objects.get(pk=pk)
 
     @staticmethod
-    def __error_invalid_request_user(request, authorized_user_id):
-        if request.user.id != authorized_user_id:
-            body = {"message": "invalid user to request"}
-            return Response(body, status=status.HTTP_403_FORBIDDEN)
+    def __error_invalid_request_user(requested_user_id, authorized_user_id):
+        if int(requested_user_id) != int(authorized_user_id):
+            message = "invalid user to request"
+            raise PermissionDenied(message)
 
     def post(self, request, *args, **kwargs):
         body = {"message": ''}
@@ -254,7 +276,7 @@ class SelectAnswerAPI(ChangeBoolAPI):
         self.queryset = Answer.objects.filter(pk=pk).all()
         answer = self.get_object()
 
-        self.__error_invalid_request_user(request, authorized_user_id=answer.question.user_id)
+        self.__error_invalid_request_user(request.user.id, authorized_user_id=answer.question.user_id)
 
         question = self.get_question(pk=answer.question_id)
         if question.has_selected_answer:

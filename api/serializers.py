@@ -15,8 +15,6 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         exclude = ('password',)
 
-    # def get_object_by_email(self, email):
-
 
 class CreateUserSerializer(serializers.ModelSerializer):
     class Meta:

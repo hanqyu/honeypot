@@ -48,6 +48,7 @@ urlpatterns += [
     url(r'^v1/auth/register/$', RegistrationAPI.as_view()),
     url(r'^v1/auth/login/$', LoginAPI.as_view()),
     url(r'^v1/auth/user/$', UserAPI.as_view()),
+    url(r'^v1/auth/user/(?P<pk>\d+)/$', UserAPI.as_view()),
     url(r'^v1/auth/token/$', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     url(r'^v1/auth/token/refresh/$', TokenRefreshView.as_view(), name='token_refresh'),
     url(r'^v1/auth/token/verify/$', TokenVerifyView.as_view(), name='token_verify'),
