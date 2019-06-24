@@ -23,15 +23,20 @@ class QuestionAdmin(admin.ModelAdmin):
     search_fields = ('id', 'user', 'text')
 
 
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
+
+
 admin.site.register(User, UserAdmin)
 admin.site.register(Region)
 admin.site.register(District)
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Answer)
-admin.site.register(Category)
+admin.site.register(Category, CategoryAdmin)
 admin.site.register(QuestionVote)
 
 
+# 어드민 로그인 시 리다이렉트 문제 해결
 class AuthRequiredMiddleware(object):
     def process_request(self, request):
         redirect_url = '/admin/login'
