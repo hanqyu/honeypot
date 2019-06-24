@@ -20,7 +20,8 @@ from .models import (
 )
 from rest_framework import viewsets, permissions, generics, status
 from rest_framework.response import Response
-from rest_framework.exceptions import PermissionDenied
+from rest_framework.exceptions import PermissionDenied, APIException
+from django.core.exceptions import ObjectDoesNotExist
 from .tokens import TokenSerializer
 from django.forms.models import model_to_dict
 
@@ -121,6 +122,12 @@ class UserAPI(generics.RetrieveAPIView):
 
     def patch(self, request, *args, **kwargs):
         self.__error_invalid_request_user(request.user.id, authorized_user_id=kwargs.get('pk'))
+        if request.data['category']:
+            for category_id in request.data['category']:
+                try:
+                    Category.objects.get(id=category_id)
+                except ObjectDoesNotExist:
+                    raise APIException('Given categories is not correct.')
 
         instance = self.get_object()
         serializer = self.get_serializer(instance, data=request.data, partial=True)
