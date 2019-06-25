@@ -15,6 +15,8 @@ from .views import (
     AnswerAPI,
     SelectAnswerAPI,
     RecentQuestionAPI,
+    PopularQuestionAPI,
+    PreferredQuestionAPI,
     VoteQuestionAPI,
     AnswerInQuestionAPI
 )
@@ -22,7 +24,6 @@ from django.urls import include
 from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
-
 
 router = routers.DefaultRouter()
 router.register('user', UserViewSet)
@@ -61,6 +62,7 @@ urlpatterns += [
     url(r'^v1/answer/$', AnswerAPI.as_view()),
     url(r'^v1/answer/(?P<pk>\d+)/select/$', SelectAnswerAPI.as_view()),
     url(r'^v1/question/recent/$', RecentQuestionAPI.as_view()),
+    url(r'^v1/question/popular/$', PopularQuestionAPI.as_view()),
+    url(r'^v1/question/preferred/$', PreferredQuestionAPI.as_view()),
     url(r'^v1/question/(?P<pk>\d+)/vote/$', VoteQuestionAPI.as_view())
 ]
-

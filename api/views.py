@@ -63,7 +63,7 @@ class QuestionVoteViewSet(viewsets.ModelViewSet):
 
 class RegistrationAPI(generics.GenericAPIView):
     serializer_class = CreateUserSerializer
-    permissions_classes = (permissions.AllowAny, )
+    permissions_classes = (permissions.AllowAny,)
 
     def post(self, request, *args, **kwargs):
         '''
@@ -108,7 +108,7 @@ class LoginAPI(generics.GenericAPIView):
 
 
 class UserAPI(generics.RetrieveAPIView):
-    permission_classes = (permissions.IsAuthenticated, )
+    permission_classes = (permissions.IsAuthenticated,)
     serializer_class = UserSerializer
 
     @staticmethod
@@ -215,7 +215,7 @@ class AnswerInQuestionAPI(generics.GenericAPIView):
             status=200,
             data={
                 "question": question,
-                "result_count": len(result),
+                "count": len(result),
                 "result": result
             })
 
@@ -314,23 +314,104 @@ class RecentQuestionAPI(generics.RetrieveAPIView):
     max_count = 30
 
     def get_queryset(self):
+        category = self.kwargs.get('category')
+        if category:
+            self.queryset = self.queryset.filter(category=category)
         return self.queryset.order_by('-created_at')
 
-    def post(self, request, *args, **kwargs):
-        count = min(request.data['count'], self.max_count)
-        category = request.data.get('category')
-        if category:
-            self.queryset = self.queryset.filter(category=category).all()
-        qs = self.get_queryset()[:count].all()
-        serializer = self.get_serializer(qs, context=self.get_serializer_context(), many=True)
+    def get(self, request, *args, **kwargs):
+        queryset = self.get_queryset().all()
+
+        if self.kwargs.get('count'):
+            count = min(self.kwargs.get('count'), self.max_count)
+        else:
+            count = self.max_count
+        queryset = queryset[:count].all()
+        serializer = self.get_serializer(queryset, context=self.get_serializer_context(), many=True)
         result = serializer.data
 
         return Response(
             status=200,
             data={
-                "result_count": len(result),
+                "count": len(result),
                 "result": result
             }
+        )
+
+
+class PopularQuestionAPI(generics.RetrieveAPIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = QuestionSerializer
+    queryset = Question.objects.all()
+    max_count = 30
+
+    def get_queryset(self):
+        category = self.kwargs.get('category')
+        if category:
+            self.queryset = self.queryset.filter(category=category)
+
+        return self.queryset.order_by('-voting_count')
+
+    def get(self, request, *args, **kwargs):
+        queryset = self.get_queryset().all()
+
+        if self.kwargs.get('count'):
+            count = min(self.kwargs.get('count'), self.max_count)
+        else:
+            count = self.max_count
+        queryset = queryset[:count]
+        serializer = self.get_serializer(queryset, context=self.get_serializer_context(), many=True)
+        result = serializer.data
+
+        return Response(
+            status=200,
+            data={
+                "count": len(result),
+                "result": result
+            }
+        )
+
+
+class PreferredQuestionAPI(generics.RetrieveAPIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    serializer_class = QuestionSerializer
+    queryset = Question.objects.all()
+    max_count = 30
+
+    def get_queryset(self):
+        return self.queryset.order_by('-created_at')
+
+    def get(self, request, *args, **kwargs):
+        queryset_append = self.get_queryset().all()
+
+        category = request.user.category
+        self.queryset = self.queryset.filter(category__in=category)
+        queryset = self.get_queryset().all()
+
+        if self.kwargs.get('count'):
+            count = min(self.kwargs.get('count'), self.max_count)
+        else:
+            count = self.max_count
+
+        serializer = self.get_serializer(queryset, context=self.get_serializer_context(), many=True)
+        result = serializer.data
+
+        serializer = self.get_serializer(queryset_append, context=self.get_serializer_context(), many=True)
+        result += serializer.data
+
+        result = result[::-1][:count]
+
+        response = {
+            "count": len(result),
+            "result": result
+        }
+
+        if len(category) is 0:
+            response["message"] = "선호 카테고리를 등록해주세요."
+
+        return Response(
+            status=200,
+            data=response
         )
 
 
@@ -375,4 +456,3 @@ class VoteQuestionAPI(generics.GenericAPIView):
             }
 
         return Response(response)
-
