@@ -43,6 +43,7 @@ class CreateUserSerializer(serializers.ModelSerializer):
             return instance
 
 
+
 class LoginUserSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField()

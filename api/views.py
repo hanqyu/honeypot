@@ -225,7 +225,9 @@ class AnswerAPI(generics.GenericAPIView):
     serializer_class = AnswerSerializer
 
     def post(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
+        data = request.data
+        data['user'] = request.user.id
+        serializer = self.get_serializer(data=data)
         serializer.is_valid(raise_exception=True)
         instance = serializer.save()
         return Response(
