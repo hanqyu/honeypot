@@ -446,23 +446,20 @@ class VoteQuestionAPI(generics.GenericAPIView):
             user_questioned_id=validated_data['user_questioned'].id,
             user_voted_id=validated_data['user_voted'].id
         )
-        if not created:
-            instance.is_active = not instance.is_active
-            instance.save()
 
-        response = {
-            'new_created': created,
-            'result': self.get_serializer(
-                instance, context=self.get_serializer_context()
-            ).data
-        }
-
-        if not created:
-            response['before_changed'] = {
-                'is_active': not instance.is_active
+        if created:
+            response = {
+                'new_created': created,
+                'result': self.get_serializer(
+                    instance, context=self.get_serializer_context()
+                ).data
             }
-            response['after_changed'] = {
-                'is_active': instance.is_active
+
+        else:
+            instance.delete()
+            response = {
+                'deleted': True,
+                'message': 'boost가 취소되었습니다.'
             }
 
         return Response(response)

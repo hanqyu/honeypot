@@ -82,8 +82,6 @@ class Question(models.Model):
         managed = True
 
     def get_requested_user_voted_or_not(self, requested_user_id):
-        print(self.question_vote.values_list('user_voted', flat=True))
-        print(requested_user_id)
         return requested_user_id in self.question_vote.values_list('user_voted', flat=True)
 
 
@@ -91,7 +89,6 @@ class QuestionVote(models.Model):
     question = models.ForeignKey('Question', on_delete=models.SET_NULL, null=True, default=None, related_name='question_vote')
     user_questioned = models.ForeignKey('User', on_delete=models.SET_NULL, null=True, default=None, related_name='voted_from')
     user_voted = models.ForeignKey('User', on_delete=models.SET_NULL, null=True, default=None, related_name='voted_to')
-    is_active = models.BooleanField(default=True)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
