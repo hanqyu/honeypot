@@ -72,8 +72,6 @@ class Question(models.Model):
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, default=None, related_name='question')
     selected_answer = models.OneToOneField('Answer', on_delete=models.SET_NULL, default=None, null=True, related_name='question_selected_to')
     has_selected_answer = models.BooleanField(default=False)
-    # answer = models.ForeignKey('Answer', on_delete=models.SET_NULL, null=True, default=None, blank=True, related_name='question')
-    # voting = models.ForeignKey('QuestionVote', on_delete=models.SET_NULL, null=True, default=None, blank=True, related_name='question')
     # image = models.ImageField(upload_to='question_images/')
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -82,6 +80,11 @@ class Question(models.Model):
         verbose_name = _('question')
         verbose_name_plural = _('questions')
         managed = True
+
+    def get_requested_user_voted_or_not(self, requested_user_id):
+        print(self.question_vote.values_list('user_voted', flat=True))
+        print(requested_user_id)
+        return requested_user_id in self.question_vote.values_list('user_voted', flat=True)
 
 
 class QuestionVote(models.Model):

@@ -23,6 +23,12 @@ class QuestionAdmin(admin.ModelAdmin):
     search_fields = ('id', 'user', 'text')
 
 
+class QuestionVoteAdmin(admin.ModelAdmin):
+    list_display = ('id', 'question_id', 'user_questioned_id', 'user_voted_id', 'updated_at', 'created_at')
+    list_filter = (('created_at', DateRangeFilter),)
+    search_fields = ('id', 'question', 'user_questioned', 'user_voted')
+
+
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
 
@@ -33,7 +39,7 @@ admin.site.register(District)
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Answer)
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(QuestionVote)
+admin.site.register(QuestionVote, QuestionVoteAdmin)
 
 
 # 어드민 로그인 시 리다이렉트 문제 해결

@@ -331,7 +331,15 @@ class RecentQuestionAPI(generics.RetrieveAPIView):
             count = self.max_count
         queryset = queryset[:count].all()
         serializer = self.get_serializer(queryset, context=self.get_serializer_context(), many=True)
+
         result = serializer.data
+        requested_user_id = request.user.id
+
+        for idx, question in enumerate(result):
+            print(question['id'])
+            question = Question.objects.get(pk=int(question['id']))
+            requested_user_voted_or_not = question.get_requested_user_voted_or_not(requested_user_id)
+            result[idx]['requested_user_voted'] = requested_user_voted_or_not
 
         return Response(
             status=200,
