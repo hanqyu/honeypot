@@ -32,7 +32,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     region = models.ForeignKey('Region', on_delete=models.SET_NULL, null=True)
     gender = models.CharField(max_length=7, choices=GENDER_CHOICES, default='unknown', null=True, blank=True)
     birth_date = models.DateField(null=True)
-    category = ArrayField(models.IntegerField(blank=True), default=[])
+    category = ArrayField(models.IntegerField(blank=True), default=list)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -72,8 +72,8 @@ class Question(models.Model):
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, default=None, related_name='question')
     selected_answer = models.OneToOneField('Answer', on_delete=models.SET_NULL, default=None, null=True, related_name='question_selected_to')
     has_selected_answer = models.BooleanField(default=False)
-    answer_count = models.IntegerField(default=0)  # TODO: 자동구현
-    voting_count = models.IntegerField(default=0)  # TODO: 자동구현
+    # answer = models.ForeignKey('Answer', on_delete=models.SET_NULL, null=True, default=None, blank=True, related_name='question')
+    # voting = models.ForeignKey('QuestionVote', on_delete=models.SET_NULL, null=True, default=None, blank=True, related_name='question')
     # image = models.ImageField(upload_to='question_images/')
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)

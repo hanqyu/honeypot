@@ -43,7 +43,6 @@ class CreateUserSerializer(serializers.ModelSerializer):
             return instance
 
 
-
 class LoginUserSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField()
@@ -70,7 +69,6 @@ class LoginUserSerializer(serializers.Serializer):
 
 
 class RegionSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Region
         fields = '__all__'
@@ -86,16 +84,19 @@ class DistrictSerializer(serializers.ModelSerializer):
 
 class QuestionSerializer(serializers.ModelSerializer):
     answer = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    user_id = serializers.ReadOnlyField(source='user.id')
     user_name = serializers.ReadOnlyField(source='user.username')
     user_avatar = serializers.SerializerMethodField('get_photo_url')
     user_is_active = serializers.ReadOnlyField(source='user.is_active')
     region_name = serializers.CharField(source='region.name', read_only=True)
     category_name = serializers.CharField(source='category.name', read_only=True)
     selected_answer_text = serializers.CharField(source='selected_answer.text', read_only=True)
+    answer_count = serializers.ReadOnlyField(source='answer.count')
+    voting_count = serializers.ReadOnlyField(source='question_vote.count')
 
     class Meta:
         model = Question
-        exclude = ('region',)
+        exclude = ('region', 'user')
 
     def get_photo_url(self, obj):
         try:
@@ -107,12 +108,13 @@ class QuestionSerializer(serializers.ModelSerializer):
 
 
 class AnswerSerializer(serializers.ModelSerializer):
-    username = serializers.ReadOnlyField(source='user.username')
+    user_id = serializers.ReadOnlyField(source='user.id')
+    user_name = serializers.ReadOnlyField(source='user.username')
     user_avatar = serializers.SerializerMethodField('get_photo_url')
 
     class Meta:
         model = Answer
-        fields = '__all__'
+        exclude = ('user',)
 
     def get_photo_url(self, obj):
         request = self.context.get('request')

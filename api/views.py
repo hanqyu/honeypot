@@ -24,6 +24,7 @@ from rest_framework.exceptions import PermissionDenied, APIException
 from django.core.exceptions import ObjectDoesNotExist
 from .tokens import TokenSerializer
 from django.forms.models import model_to_dict
+from django.db.models import Count
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -351,8 +352,7 @@ class PopularQuestionAPI(generics.RetrieveAPIView):
         category = self.kwargs.get('category')
         if category:
             self.queryset = self.queryset.filter(category=category)
-
-        return self.queryset.order_by('-voting_count')
+        return self.queryset.annotate(voting_count=Count('question_vote')).order_by('-voting_count')
 
     def get(self, request, *args, **kwargs):
         queryset = self.get_queryset().all()
