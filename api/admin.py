@@ -24,7 +24,7 @@ class QuestionAdmin(admin.ModelAdmin):
 
 
 class QuestionVoteAdmin(admin.ModelAdmin):
-    list_display = ('id', 'question_id', 'user_questioned_id', 'user_voted_id', 'updated_at', 'created_at')
+    list_display = ('id', 'question_id', 'user_questioned_id', 'user_voted_id', 'created_at')
     list_filter = (('created_at', DateRangeFilter),)
     search_fields = ('id', 'question', 'user_questioned', 'user_voted')
 

@@ -89,7 +89,6 @@ class QuestionVote(models.Model):
     question = models.ForeignKey('Question', on_delete=models.SET_NULL, null=True, default=None, related_name='question_vote')
     user_questioned = models.ForeignKey('User', on_delete=models.SET_NULL, null=True, default=None, related_name='voted_from')
     user_voted = models.ForeignKey('User', on_delete=models.SET_NULL, null=True, default=None, related_name='voted_to')
-    updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
