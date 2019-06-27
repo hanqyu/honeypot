@@ -84,7 +84,6 @@ class DistrictSerializer(serializers.ModelSerializer):
 
 class QuestionSerializer(serializers.ModelSerializer):
     answer = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    user_id = serializers.ReadOnlyField(source='user.id')
     user_name = serializers.ReadOnlyField(source='user.username')
     user_avatar = serializers.SerializerMethodField('get_photo_url')
     user_is_active = serializers.ReadOnlyField(source='user.is_active')
@@ -96,7 +95,7 @@ class QuestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Question
-        exclude = ('region', 'user')
+        exclude = ('region', )
 
     def get_photo_url(self, obj):
         try:
