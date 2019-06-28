@@ -107,13 +107,12 @@ class QuestionSerializer(serializers.ModelSerializer):
 
 
 class AnswerSerializer(serializers.ModelSerializer):
-    user_id = serializers.ReadOnlyField(source='user.id')
     user_name = serializers.ReadOnlyField(source='user.username')
     user_avatar = serializers.SerializerMethodField('get_photo_url')
 
     class Meta:
         model = Answer
-        exclude = ('user',)
+        fields = '__all__'
 
     def get_photo_url(self, obj):
         request = self.context.get('request')

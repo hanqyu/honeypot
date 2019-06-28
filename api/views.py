@@ -205,12 +205,19 @@ class AnswerInQuestionAPI(generics.GenericAPIView):
         question = {
             "id": instance.id,
             "text": instance.text,
+            "user_id": instance.user.id,
             "created_at": instance.created_at,
             "has_selected_answer": instance.has_selected_answer,
         }
+
+        result = AnswerSerializer(answers, context=self.get_serializer_context(), many=True).data
+
         if instance.has_selected_answer:
             question['selected_answer'] = instance.selected_answer.id
-        result = AnswerSerializer(answers, context=self.get_serializer_context(), many=True).data
+            result = sorted(result, key=lambda k: k['is_selected'], reverse=True)
+
+        question['requested_user_voted'] = instance.get_requested_user_voted_or_not(request.user.id)
+        question['is_my_question'] = (instance.user.id == request.user.id)
 
         return Response(
             status=200,
@@ -308,8 +315,6 @@ class SelectAnswerAPI(ChangeBoolAPI):
             })
 
 
-# TODO : request.data['user'] = request.user.id -> decorator로 처리
-
 class RecentQuestionAPI(generics.RetrieveAPIView):
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = QuestionSerializer
@@ -333,10 +338,9 @@ class RecentQuestionAPI(generics.RetrieveAPIView):
         serializer = self.get_serializer(queryset, context=self.get_serializer_context(), many=True)
 
         result = serializer.data
-        requested_user_id = request.user.id
 
+        requested_user_id = request.user.id
         for idx, question in enumerate(result):
-            print(question['id'])
             question = Question.objects.get(pk=int(question['id']))
             requested_user_voted_or_not = question.get_requested_user_voted_or_not(requested_user_id)
             result[idx]['requested_user_voted'] = requested_user_voted_or_not
@@ -372,6 +376,12 @@ class PopularQuestionAPI(generics.RetrieveAPIView):
         queryset = queryset[:count]
         serializer = self.get_serializer(queryset, context=self.get_serializer_context(), many=True)
         result = serializer.data
+
+        requested_user_id = request.user.id
+        for idx, question in enumerate(result):
+            question = Question.objects.get(pk=int(question['id']))
+            requested_user_voted_or_not = question.get_requested_user_voted_or_not(requested_user_id)
+            result[idx]['requested_user_voted'] = requested_user_voted_or_not
 
         return Response(
             status=200,
@@ -410,6 +420,12 @@ class PreferredQuestionAPI(generics.RetrieveAPIView):
         result += serializer.data
 
         result = result[::-1][:count]
+
+        requested_user_id = request.user.id
+        for idx, question in enumerate(result):
+            question = Question.objects.get(pk=int(question['id']))
+            requested_user_voted_or_not = question.get_requested_user_voted_or_not(requested_user_id)
+            result[idx]['requested_user_voted'] = requested_user_voted_or_not
 
         response = {
             "count": len(result),

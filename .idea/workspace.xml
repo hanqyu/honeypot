@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec372852-b881-4b96-b2aa-bdb2838819fc" name="Default Changelist" comment="QuestionVote에서 is_active로 토글하던 것에서">
+    <list default="true" id="ec372852-b881-4b96-b2aa-bdb2838819fc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,19 +59,19 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/api/serializers.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="203">
-                  <caret line="121" column="53" lean-forward="true" selection-start-line="121" selection-start-column="53" selection-end-line="121" selection-end-column="53" />
+                <state relative-caret-position="302">
+                  <caret line="108" column="52" lean-forward="true" selection-start-line="108" selection-start-column="52" selection-end-line="108" selection-end-column="52" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/api/views.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="323">
-                  <caret line="457" column="13" lean-forward="true" selection-start-line="457" selection-start-column="13" selection-end-line="457" selection-end-column="13" />
+                <state relative-caret-position="401">
+                  <caret line="215" column="69" lean-forward="true" selection-start-line="215" selection-start-column="69" selection-end-line="215" selection-end-column="69" />
                   <folding>
-                    <element signature="e#0#242#0" expanded="true" />
+                    <element signature="e#653#720#0" />
                     <element signature="e#771#842#0" />
                     <element signature="e#895#970#0" />
                     <element signature="e#1023#1098#0" />
@@ -79,11 +79,60 @@
                     <element signature="e#1273#1348#0" />
                     <element signature="e#1405#1488#0" />
                     <element signature="e#1543#2514#0" />
+                    <element signature="e#1689#2514#0" />
+                    <element signature="e#1689#1796#1" />
+                    <element signature="e#1855#1961#0" />
+                    <element signature="e#2020#2126#0" />
+                    <element signature="e#2307#2504#0" />
                     <element signature="e#2562#3044#0" />
+                    <element signature="e#2656#3044#0" />
+                    <element signature="e#2837#3034#0" />
+                    <element signature="e#3092#3734#0" />
+                    <element signature="e#3291#3426#0" />
+                    <element signature="e#3357#3473#0" />
+                    <element signature="e#3218#3242#0" />
+                    <element signature="e#3582#4114#0" />
+                    <element signature="e#3758#3998#0" />
+                    <element signature="e#3812#4006#0" />
+                    <element signature="e#3565#3724#0" />
                     <element signature="e#3785#5399#0" />
-                    <element signature="e#4924#5981#0" />
+                    <element signature="e#3480#3856#0" />
+                    <element signature="e#3703#3855#0" />
+                    <element signature="e#4405#4966#0" />
+                    <element signature="e#4809#4965#0" />
+                    <element signature="e#4487#4865#0" />
+                    <element signature="e#4778#4864#0" />
+                    <element signature="e#6030#7038#0" />
+                    <element signature="e#6353#6503#0" />
+                    <element signature="e#6570#7038#0" />
+                    <element signature="e#6925#7037#0" />
                     <element signature="e#7091#7451#0" />
+                    <element signature="e#7155#7451#0" />
                     <element signature="e#8434#9968#0" />
+                    <element signature="e#7686#7720#0" />
+                    <element signature="e#8771#8914#0" />
+                    <element signature="e#8831#8914#0" />
+                    <element signature="e#8395#8519#0" />
+                    <element signature="e#8931#9043#0" />
+                    <element signature="e#9168#9995#0" />
+                    <element signature="e#10595#10775#0" />
+                    <element signature="e#9892#9985#0" />
+                    <element signature="e#11292#12001#0" />
+                    <element signature="e#11691#11921#0" />
+                    <element signature="e#12316#13180#0" />
+                    <element signature="e#12805#13056#0" />
+                    <element signature="e#12042#12090#0" />
+                    <element signature="e#12381#13309#0" />
+                    <element signature="e#12569#12613#0" />
+                    <element signature="e#13528#14803#0" />
+                    <element signature="e#14326#14577#0" />
+                    <element signature="e#13395#13469#0" />
+                    <element signature="e#10050#11475#0" />
+                    <element signature="e#14363#15673#0" />
+                    <element signature="e#15102#15346#0" />
+                    <element signature="e#15113#15346#0" />
+                    <element signature="e#15129#15263#0" />
+                    <element signature="e#15139#15268#0" />
                   </folding>
                 </state>
               </provider>
@@ -101,11 +150,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/api/admin.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="181">
-                  <caret line="26" column="80" selection-start-line="26" selection-start-column="80" selection-end-line="26" selection-end-column="80" />
+                <state relative-caret-position="331">
+                  <caret line="36" column="27" lean-forward="true" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
                   <folding>
                     <element signature="e#0#32#0" expanded="true" />
                   </folding>
@@ -117,11 +166,11 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/honeypot/settings.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="404">
-                  <caret line="139" column="25" lean-forward="true" selection-start-line="139" selection-start-column="25" selection-end-line="139" selection-end-column="25" />
+                <state relative-caret-position="405">
+                  <caret line="27" column="12" lean-forward="true" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
                   <folding>
                     <element signature="e#307#316#0" expanded="true" />
                   </folding>
@@ -133,16 +182,16 @@
             <entry file="file://$PROJECT_DIR$/api/views.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="146">
-                  <caret line="390" column="19" selection-start-line="390" selection-start-column="19" selection-end-line="390" selection-end-column="19" />
+                  <caret line="400" column="19" selection-start-line="400" selection-start-column="19" selection-end-line="400" selection-end-column="19" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/api/models.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="254">
-                  <caret line="92" column="54" lean-forward="true" selection-start-line="92" selection-start-column="54" selection-end-line="92" selection-end-column="54" />
+                <state relative-caret-position="173">
+                  <caret line="83" column="27" lean-forward="true" selection-start-line="83" selection-start-column="27" selection-end-line="83" selection-end-column="27" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
@@ -194,10 +243,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>q</find>
-      <find>query</find>
-      <find>model_t</find>
-      <find>request.user</find>
       <find>vote</find>
       <find>quer</find>
       <find>QuestionSerializer</find>
@@ -224,6 +269,10 @@
       <find>Array</find>
       <find>return</find>
       <find>up</find>
+      <find>Re</find>
+      <find>Recent</find>
+      <find>print</find>
+      <find>requested_user_vote</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -286,17 +335,18 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/honeypot/settings.py" />
         <option value="$PROJECT_DIR$/api/urls.py" />
+        <option value="$PROJECT_DIR$/api/admin.py" />
+        <option value="$PROJECT_DIR$/api/models.py" />
         <option value="$PROJECT_DIR$/api/serializers.py" />
         <option value="$PROJECT_DIR$/api/views.py" />
-        <option value="$PROJECT_DIR$/api/models.py" />
-        <option value="$PROJECT_DIR$/api/admin.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="23" />
-    <option name="width" value="1680" />
-    <option name="height" value="488" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-213" />
+    <option name="y" value="-1057" />
+    <option name="width" value="1920" />
+    <option name="height" value="1005" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -496,21 +546,7 @@
       <workItem from="1559654263549" duration="544000" />
       <workItem from="1561167970177" duration="9599000" />
       <workItem from="1561181699350" duration="294000" />
-      <workItem from="1561309331138" duration="19515000" />
-    </task>
-    <task id="LOCAL-00015" summary="add 질문, 답변, 카테고리.">
-      <created>1557399409213</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1557399409213</updated>
-    </task>
-    <task id="LOCAL-00016" summary="QuestionAPI 구현 Token -&gt; TokenSerializer">
-      <created>1557558537661</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1557558537661</updated>
+      <workItem from="1561309331138" duration="25302000" />
     </task>
     <task id="LOCAL-00017" summary="수정 gitignore">
       <created>1557558576276</created>
@@ -841,11 +877,25 @@
       <option name="project" value="LOCAL" />
       <updated>1561621711903</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="QuestionVote.updated_at 삭제">
+      <created>1561621825264</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1561621825264</updated>
+    </task>
+    <task id="LOCAL-00065" summary="QuestionAPI POST 작동할 수 있도록 수정">
+      <created>1561644918455</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1561644918456</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="219600000" />
+    <option name="totallyTimeSpent" value="225387000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -857,10 +907,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="974" extended-state="6" />
+    <frame x="-213" y="-1057" width="1920" height="1005" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49830508" visible="true" weight="0.13186814" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49830508" visible="true" weight="0.115015976" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" sideWeight="0.5016949" side_tool="true" weight="0.17704518" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -874,7 +924,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.498779" weight="0.3276644" />
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.32992035" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.502442" side_tool="true" weight="0.19705549" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.497558" visible="true" weight="0.39342403" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.497558" visible="true" weight="0.14238773" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.498779" weight="0.29898074" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -964,8 +1014,6 @@
       <path value="$PROJECT_DIR$" />
       <path value="~/PycharmProjects/honeypot" />
     </ignored-roots>
-    <MESSAGE value="[추가] README.md" />
-    <MESSAGE value="[수정] README.md" />
     <MESSAGE value="[수정] requirements.txt" />
     <MESSAGE value="[수정] requirements.txt (vulnerable patch)" />
     <MESSAGE value="[추가] .gitattributes" />
@@ -989,7 +1037,9 @@
     <MESSAGE value="voting_count, answer_count 구현" />
     <MESSAGE value="requested_user_voted 구현" />
     <MESSAGE value="[변경] QuestionVote에서 is_active로 토글하던 것 -&gt; 레코드 생성, 삭제" />
-    <option name="LAST_COMMIT_MESSAGE" value="[변경] QuestionVote에서 is_active로 토글하던 것 -&gt; 레코드 생성, 삭제" />
+    <MESSAGE value="QuestionVote.updated_at 삭제" />
+    <MESSAGE value="QuestionAPI POST 작동할 수 있도록 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="QuestionAPI POST 작동할 수 있도록 수정" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/.virtualenvs/creamie/lib/python3.7/site-packages/rest_framework/authtoken/models.py">
@@ -1243,23 +1293,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/honeypot/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="139" column="25" lean-forward="true" selection-start-line="139" selection-start-column="25" selection-end-line="139" selection-end-column="25" />
-          <folding>
-            <element signature="e#307#316#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="121" column="53" lean-forward="true" selection-start-line="121" selection-start-column="53" selection-end-line="121" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/collections/__init__.pyi">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1281,6 +1314,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/api/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="36" column="27" lean-forward="true" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="108" column="52" lean-forward="true" selection-start-line="108" selection-start-column="52" selection-end-line="108" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-892">
@@ -1291,12 +1341,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/honeypot/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="12" lean-forward="true" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
+          <folding>
+            <element signature="e#307#316#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="457" column="13" lean-forward="true" selection-start-line="457" selection-start-column="13" selection-end-line="457" selection-end-column="13" />
+        <state relative-caret-position="401">
+          <caret line="215" column="69" lean-forward="true" selection-start-line="215" selection-start-column="69" selection-end-line="215" selection-end-column="69" />
           <folding>
-            <element signature="e#0#242#0" expanded="true" />
+            <element signature="e#653#720#0" />
             <element signature="e#771#842#0" />
             <element signature="e#895#970#0" />
             <element signature="e#1023#1098#0" />
@@ -1304,21 +1364,60 @@
             <element signature="e#1273#1348#0" />
             <element signature="e#1405#1488#0" />
             <element signature="e#1543#2514#0" />
+            <element signature="e#1689#2514#0" />
+            <element signature="e#1689#1796#1" />
+            <element signature="e#1855#1961#0" />
+            <element signature="e#2020#2126#0" />
+            <element signature="e#2307#2504#0" />
             <element signature="e#2562#3044#0" />
+            <element signature="e#2656#3044#0" />
+            <element signature="e#2837#3034#0" />
+            <element signature="e#3092#3734#0" />
+            <element signature="e#3291#3426#0" />
+            <element signature="e#3357#3473#0" />
+            <element signature="e#3218#3242#0" />
+            <element signature="e#3582#4114#0" />
+            <element signature="e#3758#3998#0" />
+            <element signature="e#3812#4006#0" />
+            <element signature="e#3565#3724#0" />
             <element signature="e#3785#5399#0" />
-            <element signature="e#4924#5981#0" />
+            <element signature="e#3480#3856#0" />
+            <element signature="e#3703#3855#0" />
+            <element signature="e#4405#4966#0" />
+            <element signature="e#4809#4965#0" />
+            <element signature="e#4487#4865#0" />
+            <element signature="e#4778#4864#0" />
+            <element signature="e#6030#7038#0" />
+            <element signature="e#6353#6503#0" />
+            <element signature="e#6570#7038#0" />
+            <element signature="e#6925#7037#0" />
             <element signature="e#7091#7451#0" />
+            <element signature="e#7155#7451#0" />
             <element signature="e#8434#9968#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="26" column="80" selection-start-line="26" selection-start-column="80" selection-end-line="26" selection-end-column="80" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#7686#7720#0" />
+            <element signature="e#8771#8914#0" />
+            <element signature="e#8831#8914#0" />
+            <element signature="e#8395#8519#0" />
+            <element signature="e#8931#9043#0" />
+            <element signature="e#9168#9995#0" />
+            <element signature="e#10595#10775#0" />
+            <element signature="e#9892#9985#0" />
+            <element signature="e#11292#12001#0" />
+            <element signature="e#11691#11921#0" />
+            <element signature="e#12316#13180#0" />
+            <element signature="e#12805#13056#0" />
+            <element signature="e#12042#12090#0" />
+            <element signature="e#12381#13309#0" />
+            <element signature="e#12569#12613#0" />
+            <element signature="e#13528#14803#0" />
+            <element signature="e#14326#14577#0" />
+            <element signature="e#13395#13469#0" />
+            <element signature="e#10050#11475#0" />
+            <element signature="e#14363#15673#0" />
+            <element signature="e#15102#15346#0" />
+            <element signature="e#15113#15346#0" />
+            <element signature="e#15129#15263#0" />
+            <element signature="e#15139#15268#0" />
           </folding>
         </state>
       </provider>
