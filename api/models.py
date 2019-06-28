@@ -32,7 +32,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     region = models.ForeignKey('Region', on_delete=models.SET_NULL, null=True)
     gender = models.CharField(max_length=7, choices=GENDER_CHOICES, default='unknown', null=True, blank=True)
     birth_date = models.DateField(null=True)
-    category = ArrayField(models.IntegerField(blank=True), default=list)
+    category = ArrayField(models.IntegerField(blank=True, default=None), default=list)
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
 

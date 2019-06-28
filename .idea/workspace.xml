@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec372852-b881-4b96-b2aa-bdb2838819fc" name="Default Changelist" comment="">
+    <list default="true" id="ec372852-b881-4b96-b2aa-bdb2838819fc" name="Default Changelist" comment="DEBUG FALSE">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/models.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -170,7 +169,7 @@
             <entry file="file://$PROJECT_DIR$/honeypot/settings.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="405">
-                  <caret line="27" column="12" lean-forward="true" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
+                  <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
                   <folding>
                     <element signature="e#307#316#0" expanded="true" />
                   </folding>
@@ -190,8 +189,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/api/models.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="173">
-                  <caret line="83" column="27" lean-forward="true" selection-start-line="83" selection-start-column="27" selection-end-line="83" selection-end-column="27" />
+                <state relative-caret-position="510">
+                  <caret line="34" column="70" selection-start-line="34" selection-start-column="70" selection-end-line="34" selection-end-column="70" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
@@ -243,7 +242,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>vote</find>
       <find>quer</find>
       <find>QuestionSerializer</find>
       <find>auth</find>
@@ -273,6 +271,7 @@
       <find>Recent</find>
       <find>print</find>
       <find>requested_user_vote</find>
+      <find>DATA</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -333,12 +332,12 @@
         <option value="$PROJECT_DIR$/honeypot/secrets.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/honeypot/settings.py" />
         <option value="$PROJECT_DIR$/api/urls.py" />
         <option value="$PROJECT_DIR$/api/admin.py" />
-        <option value="$PROJECT_DIR$/api/models.py" />
         <option value="$PROJECT_DIR$/api/serializers.py" />
         <option value="$PROJECT_DIR$/api/views.py" />
+        <option value="$PROJECT_DIR$/api/models.py" />
+        <option value="$PROJECT_DIR$/honeypot/settings.py" />
       </list>
     </option>
   </component>
@@ -546,21 +545,7 @@
       <workItem from="1559654263549" duration="544000" />
       <workItem from="1561167970177" duration="9599000" />
       <workItem from="1561181699350" duration="294000" />
-      <workItem from="1561309331138" duration="25302000" />
-    </task>
-    <task id="LOCAL-00017" summary="수정 gitignore">
-      <created>1557558576276</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1557558576276</updated>
-    </task>
-    <task id="LOCAL-00018" summary="질문 생성,수정 구현">
-      <created>1557561859643</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1557561859643</updated>
+      <workItem from="1561309331138" duration="25568000" />
     </task>
     <task id="LOCAL-00019" summary="[추가] 답변 채택">
       <created>1557594443484</created>
@@ -891,11 +876,25 @@
       <option name="project" value="LOCAL" />
       <updated>1561644918456</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="AnswerSerializer 수정">
+      <created>1561697537653</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1561697537653</updated>
+    </task>
+    <task id="LOCAL-00067" summary="DEBUG FALSE">
+      <created>1561697555942</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1561697555942</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="225387000" />
+    <option name="totallyTimeSpent" value="225653000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -1014,8 +1013,6 @@
       <path value="$PROJECT_DIR$" />
       <path value="~/PycharmProjects/honeypot" />
     </ignored-roots>
-    <MESSAGE value="[수정] requirements.txt" />
-    <MESSAGE value="[수정] requirements.txt (vulnerable patch)" />
     <MESSAGE value="[추가] .gitattributes" />
     <MESSAGE value="uwsgi / nginx 셋팅" />
     <MESSAGE value="nginx.conf legacy 삭제" />
@@ -1039,7 +1036,9 @@
     <MESSAGE value="[변경] QuestionVote에서 is_active로 토글하던 것 -&gt; 레코드 생성, 삭제" />
     <MESSAGE value="QuestionVote.updated_at 삭제" />
     <MESSAGE value="QuestionAPI POST 작동할 수 있도록 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="QuestionAPI POST 작동할 수 있도록 수정" />
+    <MESSAGE value="AnswerSerializer 수정" />
+    <MESSAGE value="DEBUG FALSE" />
+    <option name="LAST_COMMIT_MESSAGE" value="DEBUG FALSE" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/.virtualenvs/creamie/lib/python3.7/site-packages/rest_framework/authtoken/models.py">
@@ -1285,8 +1284,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="543">
+          <caret line="60" column="63" selection-start-line="60" selection-start-column="63" selection-end-line="60" selection-end-column="63" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
@@ -1326,15 +1325,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="108" column="52" lean-forward="true" selection-start-line="108" selection-start-column="52" selection-end-line="108" selection-end-column="52" />
+        <state relative-caret-position="291">
+          <caret line="74" selection-start-line="74" selection-end-line="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="400" column="19" selection-start-line="400" selection-start-column="19" selection-end-line="400" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-892">
-          <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
+        <state relative-caret-position="510">
+          <caret line="34" column="70" selection-start-line="34" selection-start-column="70" selection-end-line="34" selection-end-column="70" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -1344,80 +1350,9 @@
     <entry file="file://$PROJECT_DIR$/honeypot/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
-          <caret line="27" column="12" lean-forward="true" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
+          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
           <folding>
             <element signature="e#307#316#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="215" column="69" lean-forward="true" selection-start-line="215" selection-start-column="69" selection-end-line="215" selection-end-column="69" />
-          <folding>
-            <element signature="e#653#720#0" />
-            <element signature="e#771#842#0" />
-            <element signature="e#895#970#0" />
-            <element signature="e#1023#1098#0" />
-            <element signature="e#1149#1220#0" />
-            <element signature="e#1273#1348#0" />
-            <element signature="e#1405#1488#0" />
-            <element signature="e#1543#2514#0" />
-            <element signature="e#1689#2514#0" />
-            <element signature="e#1689#1796#1" />
-            <element signature="e#1855#1961#0" />
-            <element signature="e#2020#2126#0" />
-            <element signature="e#2307#2504#0" />
-            <element signature="e#2562#3044#0" />
-            <element signature="e#2656#3044#0" />
-            <element signature="e#2837#3034#0" />
-            <element signature="e#3092#3734#0" />
-            <element signature="e#3291#3426#0" />
-            <element signature="e#3357#3473#0" />
-            <element signature="e#3218#3242#0" />
-            <element signature="e#3582#4114#0" />
-            <element signature="e#3758#3998#0" />
-            <element signature="e#3812#4006#0" />
-            <element signature="e#3565#3724#0" />
-            <element signature="e#3785#5399#0" />
-            <element signature="e#3480#3856#0" />
-            <element signature="e#3703#3855#0" />
-            <element signature="e#4405#4966#0" />
-            <element signature="e#4809#4965#0" />
-            <element signature="e#4487#4865#0" />
-            <element signature="e#4778#4864#0" />
-            <element signature="e#6030#7038#0" />
-            <element signature="e#6353#6503#0" />
-            <element signature="e#6570#7038#0" />
-            <element signature="e#6925#7037#0" />
-            <element signature="e#7091#7451#0" />
-            <element signature="e#7155#7451#0" />
-            <element signature="e#8434#9968#0" />
-            <element signature="e#7686#7720#0" />
-            <element signature="e#8771#8914#0" />
-            <element signature="e#8831#8914#0" />
-            <element signature="e#8395#8519#0" />
-            <element signature="e#8931#9043#0" />
-            <element signature="e#9168#9995#0" />
-            <element signature="e#10595#10775#0" />
-            <element signature="e#9892#9985#0" />
-            <element signature="e#11292#12001#0" />
-            <element signature="e#11691#11921#0" />
-            <element signature="e#12316#13180#0" />
-            <element signature="e#12805#13056#0" />
-            <element signature="e#12042#12090#0" />
-            <element signature="e#12381#13309#0" />
-            <element signature="e#12569#12613#0" />
-            <element signature="e#13528#14803#0" />
-            <element signature="e#14326#14577#0" />
-            <element signature="e#13395#13469#0" />
-            <element signature="e#10050#11475#0" />
-            <element signature="e#14363#15673#0" />
-            <element signature="e#15102#15346#0" />
-            <element signature="e#15113#15346#0" />
-            <element signature="e#15129#15263#0" />
-            <element signature="e#15139#15268#0" />
           </folding>
         </state>
       </provider>
