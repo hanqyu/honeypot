@@ -90,10 +90,10 @@ class QuestionSerializer(serializers.ModelSerializer):
     region_name = serializers.CharField(source='region.name', read_only=True)
     category_name = serializers.CharField(source='category.name', read_only=True)
     selected_answer_text = serializers.CharField(source='selected_answer.text', read_only=True)
-    answer_count = serializers.SerializerMethodField()
-    voting_count = serializers.SerializerMethodField()
-    # answer_count = serializers.ReadOnlyField(source='answer.count')
-    # voting_count = serializers.ReadOnlyField(source='question_vote.count')
+    # answer_count = serializers.SerializerMethodField()
+    # voting_count = serializers.SerializerMethodField()
+    answer_count = serializers.ReadOnlyField(source='answer.count')
+    voting_count = serializers.ReadOnlyField(source='question_vote.count')
 
     class Meta:
         model = Question
