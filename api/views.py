@@ -123,7 +123,7 @@ class UserAPI(generics.RetrieveAPIView):
 
     def patch(self, request, *args, **kwargs):
         self.__error_invalid_request_user(request.user.id, authorized_user_id=kwargs.get('pk'))
-        if request.data['category']:
+        if request.data.get('category'):
             for category_id in request.data['category']:
                 try:
                     Category.objects.get(id=category_id)

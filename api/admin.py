@@ -32,12 +32,16 @@ class QuestionVoteAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
 
+class AnswerAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user_id', 'question', 'text', 'anonymous', 'is_selected', 'updated_at', 'created_at')
+
+
 
 admin.site.register(User, UserAdmin)
 admin.site.register(Region)
 admin.site.register(District)
 admin.site.register(Question, QuestionAdmin)
-admin.site.register(Answer)
+admin.site.register(Answer, AnswerAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(QuestionVote, QuestionVoteAdmin)
 
